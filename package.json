@@ -1,0 +1,53 @@
+{
+  "name": "fig-ma",
+  "version": "0.1.0",
+  "description": "CLI tool where your design took stay up to date with Figma",
+  "main": "./dist/cli.js",
+  "scripts": {
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "pre:test": "npm run lint",
+    "test": "NODE_ENV=test jest",
+    "pre:build": "npm run lint && npm run clean",
+    "build": "tsc",
+    "start": "npm run build && nodemon ./dist/cli.js",
+    "dev": "NODE_ENV=dev ts-node ./lib/cli.ts",
+    "clean": "rimraf ./dist"
+  },
+  "keywords": [
+    "Figma",
+    "UI",
+    "Utility"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/dotenv": "^6.1.0",
+    "chalk": "^2.4.2",
+    "dotenv": "^6.2.0",
+    "enquirer": "^2.3.0",
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.3.0",
+    "os": "^0.1.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.13",
+    "@types/node-fetch": "^2.1.4",
+    "jest": "^23.6.0",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^8.0.1",
+    "typescript": "^3.2.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "testRegex": "/test/.*\\.(ts|tsx|js)$"
+  }
+}
