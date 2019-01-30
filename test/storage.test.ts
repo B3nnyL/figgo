@@ -5,7 +5,7 @@ const TOKEN = "23333";
 const board = "my-board";
 const outputDir = "./fakepath/me";
 
-afterAll(() => {
+beforeAll(() => {
   rimraf("~/.fig-ma/", () => {
     console.log("clean up");
   });
