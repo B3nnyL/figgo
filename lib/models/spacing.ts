@@ -6,6 +6,6 @@ export default class Spacing {
     this.value = value;
   }
   get cssValue() {
-    return `$${this.name}:${this.value.toFixed(2)}px`;
+    return `$${this.name}: ${this.value.toFixed(2)}px;`;
   }
 }

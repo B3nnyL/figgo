@@ -30,7 +30,7 @@ export default class Color {
 
   get CssColor(): string {
     const color = this.aFloat < 1 ? this.RGBA : this.HEX;
-    return `$${this.name}:${color}`;
+    return `$${this.name}: ${color};`;
   }
 
   private rgbaIsValid(): boolean {

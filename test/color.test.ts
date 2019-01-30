@@ -27,6 +27,6 @@ describe("color class ", () => {
   });
 
   test("should return css string", () => {
-    expect(color.CssColor).toBe("$FAKE-COLOR:#daa500");
+    expect(color.CssColor).toBe("$FAKE-COLOR: #daa500;");
   });
 });

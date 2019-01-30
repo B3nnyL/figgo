@@ -6,6 +6,6 @@ const fakeSpacing = {
 describe("Spacing", () => {
   const fake = new Spacing(fakeSpacing.name, fakeSpacing.value);
   test("should accept name and value and return css string", () => {
-    expect(fake.cssValue).toBe("$FAKE-SPACING:2.00px");
+    expect(fake.cssValue).toBe("$FAKE-SPACING: 2.00px;");
   });
 });

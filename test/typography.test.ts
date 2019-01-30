@@ -23,23 +23,23 @@ describe("typography", () => {
 
   test("should return CSS formated font family", () => {
     expect(fakeTypo.CSSFontFamily).toBe(
-      "$FAKE-TYPO-FONT-FAMILY: Helvetica Neue"
+      "$FAKE-TYPO-FONT-FAMILY: Helvetica Neue;"
     );
   });
 
   test("should return CSS formated font weight", () => {
-    expect(fakeTypo.CSSFontWeight).toBe("$FAKE-TYPO-FONT-WEIGHT: 700");
+    expect(fakeTypo.CSSFontWeight).toBe("$FAKE-TYPO-FONT-WEIGHT: 700;");
   });
 
   test("should return CSS formated font size", () => {
-    expect(fakeTypo.CSSFontSize).toBe("$FAKE-TYPO-FONT-SIZE: 36px");
+    expect(fakeTypo.CSSFontSize).toBe("$FAKE-TYPO-FONT-SIZE: 36px;");
   });
 
   test("should return CSS formated font letter spacing", () => {
-    expect(fakeTypo.CSSLetterSpacing).toBe("$FAKE-TYPO-LETTER-SPACING: 0.5px");
+    expect(fakeTypo.CSSLetterSpacing).toBe("$FAKE-TYPO-LETTER-SPACING: 0.5px;");
   });
 
   test("should return CSS formated font line height", () => {
-    expect(fakeTypo.CSSLineHeight).toBe("$FAKE-TYPO-LINE-HEIGHT: 54px");
+    expect(fakeTypo.CSSLineHeight).toBe("$FAKE-TYPO-LINE-HEIGHT: 54px;");
   });
 });

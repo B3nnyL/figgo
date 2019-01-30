@@ -25,22 +25,22 @@ export default class Typography {
   }
   get CSSFontFamily(): string {
     const handler = `${this.name}-FONT-FAMILY`;
-    return `$${handler}: ${this.fontFamily}`;
+    return `$${handler}: ${this.fontFamily};`;
   }
   get CSSFontWeight(): string {
     const handler = `${this.name}-FONT-WEIGHT`;
-    return `$${handler}: ${this.fontWeight}`;
+    return `$${handler}: ${this.fontWeight};`;
   }
   get CSSFontSize(): string {
     const handler = `${this.name}-FONT-SIZE`;
-    return `$${handler}: ${this.fontSize}px`;
+    return `$${handler}: ${this.fontSize}px;`;
   }
   get CSSLetterSpacing(): string {
     const handler = `${this.name}-LETTER-SPACING`;
-    return `$${handler}: ${this.letterSpacing}px`;
+    return `$${handler}: ${this.letterSpacing}px;`;
   }
   get CSSLineHeight(): string {
     const handler = `${this.name}-LINE-HEIGHT`;
-    return `$${handler}: ${this.lineHeight}px`;
+    return `$${handler}: ${this.lineHeight}px;`;
   }
 }
