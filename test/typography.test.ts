@@ -32,14 +32,16 @@ describe("typography", () => {
   });
 
   test("should return CSS formated font size", () => {
-    expect(fakeTypo.CSSFontSize).toBe("$FAKE-TYPO-FONT-SIZE: 36px;");
+    expect(fakeTypo.CSSFontSize).toBe("$FAKE-TYPO-FONT-SIZE: 36.00px;");
   });
 
   test("should return CSS formated font letter spacing", () => {
-    expect(fakeTypo.CSSLetterSpacing).toBe("$FAKE-TYPO-LETTER-SPACING: 0.5px;");
+    expect(fakeTypo.CSSLetterSpacing).toBe(
+      "$FAKE-TYPO-LETTER-SPACING: 0.50px;"
+    );
   });
 
   test("should return CSS formated font line height", () => {
-    expect(fakeTypo.CSSLineHeight).toBe("$FAKE-TYPO-LINE-HEIGHT: 54px;");
+    expect(fakeTypo.CSSLineHeight).toBe("$FAKE-TYPO-LINE-HEIGHT: 54.00px;");
   });
 });

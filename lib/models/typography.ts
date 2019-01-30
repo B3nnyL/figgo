@@ -33,14 +33,14 @@ export default class Typography {
   }
   get CSSFontSize(): string {
     const handler = `${this.name}-FONT-SIZE`;
-    return `$${handler}: ${this.fontSize}px;`;
+    return `$${handler}: ${this.fontSize.toFixed(2)}px;`;
   }
   get CSSLetterSpacing(): string {
     const handler = `${this.name}-LETTER-SPACING`;
-    return `$${handler}: ${this.letterSpacing}px;`;
+    return `$${handler}: ${this.letterSpacing.toFixed(2)}px;`;
   }
   get CSSLineHeight(): string {
     const handler = `${this.name}-LINE-HEIGHT`;
-    return `$${handler}: ${this.lineHeight}px;`;
+    return `$${handler}: ${this.lineHeight.toFixed(2)}px;`;
   }
 }
