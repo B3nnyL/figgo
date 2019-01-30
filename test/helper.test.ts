@@ -1,10 +1,4 @@
-import {
-  floatToInt,
-  intToHex,
-  rgbToHex,
-  rgbaToString,
-  rgbToHsl
-} from "../lib/helper";
+import { floatToInt, intToHex, rgbaToString, rgbToHex } from "../lib/helper";
 const fakeR = 0.8549019607843137;
 const fakeG = 0.6470588235294118;
 const fakeB = 0;
@@ -21,6 +15,8 @@ describe("helper can", () => {
     expect(rgbToHex(fakeR, fakeG, fakeB)).toBe("#daa500");
   });
   test("convert rgba float to rgba string", () => {
-    expect(rgbaToString(fakeR, fakeG, fakeB, fakeA)).toBe("rgba(218,165,0,1)");
+    expect(rgbaToString(fakeR, fakeG, fakeB, fakeA)).toBe(
+      "rgba(218,165,0,1.00)"
+    );
   });
 });

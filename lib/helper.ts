@@ -30,5 +30,5 @@ export function rgbaToString(
   const rInt = floatToInt(r);
   const gInt = floatToInt(g);
   const bInt = floatToInt(b);
-  return `rgba(${rInt},${gInt},${bInt},${a})`;
+  return `rgba(${rInt},${gInt},${bInt},${a.toFixed(2)})`;
 }
