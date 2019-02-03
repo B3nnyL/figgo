@@ -4,14 +4,14 @@ import { join } from "path";
 import Board from "../lib/models/board";
 
 export default class Storage {
-  private boards: Array<Board> = [];
+  private boards: Board[] = [];
   private storageDir: string;
 
   constructor() {
     this.storageDir = join(os.homedir(), ".figgo");
   }
 
-  setBoards() {
+  public setBoards() {
     if (this.isStorageDirExisted()) {
       const file = join(this.storageDir, "config.json");
       if (this.isConfigFileExisted()) {
@@ -29,7 +29,7 @@ export default class Storage {
     }
   }
 
-  appendBoards(newBoard: Board, bn: string) {
+  public appendBoards(newBoard: Board, bn: string) {
     if (!this.isBoardExisted(bn)) {
       this.boards.push(newBoard);
       const file = join(this.storageDir, "config.json");
@@ -39,26 +39,16 @@ export default class Storage {
     }
   }
 
-  getBoard(bn: string): Board {
+  public getBoard(bn: string): Board {
     return this.boards.filter(board => board.boardName === bn)[0];
   }
-  getBoards(): Array<Board> {
+  public getBoards(): Board[] {
     return this.boards;
   }
 
-  private saveFile(target: Board, bn: string) {
-    const file = join(this.storageDir, "config.json");
-    const content = fs.readFileSync(file, "utf8");
-    let formatted = JSON.parse(content);
-    let filtered = formatted.boards.filter(board => board.boardName != bn);
-    filtered.push(target);
-    this.boards = filtered;
-    fs.writeFileSync(file, JSON.stringify({ boards: filtered }));
-  }
-
-  setBoardOutputDir(dir: string, bn: string) {
+  public setBoardOutputDir(dir: string, bn: string) {
     if (this.isBoardExisted(bn)) {
-      let target = this.getBoard(bn);
+      const target = this.getBoard(bn);
       target.outputDir = dir;
       this.saveFile(target, bn);
     } else {
@@ -66,9 +56,9 @@ export default class Storage {
     }
   }
 
-  setBoardOutputFormat(format: string, bn: string) {
+  public setBoardOutputFormat(format: string, bn: string) {
     if (this.isBoardExisted(bn)) {
-      let target = this.getBoard(bn);
+      const target = this.getBoard(bn);
       target.outputFormat = format;
       this.saveFile(target, bn);
     } else {
@@ -76,9 +66,9 @@ export default class Storage {
     }
   }
 
-  setBoardToken(token: string, bn: string) {
+  public setBoardToken(token: string, bn: string) {
     if (this.isBoardExisted(bn)) {
-      let target = this.getBoard(bn);
+      const target = this.getBoard(bn);
       target.token = token;
       this.saveFile(target, bn);
     } else {
@@ -86,9 +76,9 @@ export default class Storage {
     }
   }
 
-  setBoardId(id: string, bn: string) {
+  public setBoardId(id: string, bn: string) {
     if (this.isBoardExisted(bn)) {
-      let target = this.getBoard(bn);
+      const target = this.getBoard(bn);
       target.id = id;
       this.saveFile(target, bn);
     } else {
@@ -96,12 +86,12 @@ export default class Storage {
     }
   }
 
-  removeBoard(bn: string) {
+  public removeBoard(bn: string) {
     if (this.isBoardExisted(bn)) {
       const file = join(this.storageDir, "config.json");
       const content = fs.readFileSync(file, "utf8");
-      let formatted = JSON.parse(content);
-      let filtered = formatted.boards.filter(board => board.boardName != bn);
+      const formatted = JSON.parse(content);
+      const filtered = formatted.boards.filter(board => board.boardName !== bn);
       this.boards = filtered;
       fs.writeFileSync(file, JSON.stringify({ boards: filtered }));
     } else {
@@ -109,11 +99,11 @@ export default class Storage {
     }
   }
 
-  isBoardExisted(bn: string): boolean {
+  public isBoardExisted(bn: string): boolean {
     return this.boards.some(board => board.boardName === bn) ? true : false;
   }
 
-  isStorageDirExisted(): boolean {
+  public isStorageDirExisted(): boolean {
     if (!fs.existsSync(this.storageDir)) {
       fs.mkdirSync(this.storageDir);
       return false;
@@ -122,13 +112,13 @@ export default class Storage {
     }
   }
 
-  removeConfigFile(): boolean {
+  public removeConfigFile(): boolean {
     const link = join(this.storageDir, "config.json");
     fs.unlinkSync(link);
     return this.isConfigFileExisted();
   }
 
-  isConfigFileExisted(): boolean {
+  public isConfigFileExisted(): boolean {
     if (this.isStorageDirExisted()) {
       const file = join(this.storageDir, "config.json");
       const isExist = fs.existsSync(file);
@@ -136,5 +126,15 @@ export default class Storage {
       return isExist;
     }
     return false;
+  }
+
+  private saveFile(target: Board, bn: string) {
+    const file = join(this.storageDir, "config.json");
+    const content = fs.readFileSync(file, "utf8");
+    const formatted = JSON.parse(content);
+    const filtered = formatted.boards.filter(board => board.boardName !== bn);
+    filtered.push(target);
+    this.boards = filtered;
+    fs.writeFileSync(file, JSON.stringify({ boards: filtered }));
   }
 }
