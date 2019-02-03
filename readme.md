@@ -5,7 +5,7 @@ Voluptate nisi enim excepteur anim esse velit id enim incididunt in deserunt lab
 ## Dev
 
 - instalation
-  `npm i`
+  `yarn install`
 - development
   `yarn start [options]`
 - test
