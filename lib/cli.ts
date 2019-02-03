@@ -1,10 +1,9 @@
 import meow from "meow";
-const { prompt } = require("enquirer");
-import { saveColor } from "./controller";
+import { prompt } from "enquirer";
+import { saveColor } from "./helper";
 import { hints } from "./hint";
 import { getColors } from "./service";
-import Storage from "./storage";
-import Board from "./models/board";
+import Controller from "./controller";
 
 const cli = meow(hints, {
   flags: {
@@ -37,8 +36,7 @@ const cli = meow(hints, {
 
 const { input, flags } = cli;
 console.log(input, flags);
-
-const storage = new Storage();
+const controller = new Controller();
 
 if (flags.list) {
   console.log("listing...");
@@ -47,8 +45,8 @@ if (flags.list) {
 if (flags.sync) {
   if (input.length < 1) {
     console.log("sync...", flags.sync);
-    storage.setBoards();
-    const boards = storage.getBoards();
+    controller.getStorage().setBoards();
+    const boards = controller.getStorage().getBoards();
     boards.forEach(board => {
       const { token, id, outputDir, outputFormat } = board;
       const color = getColors(token, id);
@@ -63,68 +61,57 @@ if (flags.sync) {
 
 if (flags.remove) {
   console.log("remove...", flags.remove);
-  storage.setBoards();
-  storage.removeBoard(flags.remove);
+  controller.getStorage().setBoards();
+  controller.getStorage().removeBoard(flags.remove);
 }
 
 if (flags.init) {
   console.log("init", flags.init);
-  storage.setBoards();
+  controller.getStorage().setBoards();
   if (input.length < 1) {
     InitQustionaire().then(res => {
       const { boardName, id, outputDir, outputFormat, token } = res;
-      const newBoard = new Board(boardName);
-      storage.appendBoards(newBoard, boardName);
-      storage.setBoardId(id, boardName);
-      storage.setBoardOutputDir(outputDir, boardName);
-      storage.setBoardOutputFormat(outputFormat, boardName);
-      storage.setBoardToken(token, boardName);
-      if (storage.isBoardExisted(boardName)) {
-        console.log("board is added");
-      }
+      controller.saveBoard(boardName, id, outputDir, outputFormat, token);
     });
   } else {
-    const [bn, id, oDir, oFormat] = input;
-    const newBoard = new Board(bn);
-    storage.appendBoards(newBoard, bn);
-    storage.setBoardId(id, bn);
-    storage.setBoardOutputDir(oDir, bn);
-    storage.setBoardOutputFormat(oFormat, bn);
+    const [boardName, id, outputDir, outputFormat, token] = input;
+    controller.saveBoard(boardName, id, outputDir, outputFormat, token);
   }
 }
-async function InitQustionaire(): Promise<Board> {
+
+async function InitQustionaire(): Promise<any> {
   const qustions = [
     {
-      type: "input",
+      message: "Board name ?",
       name: "boardName",
-      message: "Board name ?"
+      type: "input"
     },
     {
-      type: "input",
+      message: "Board id ?",
       name: "id",
-      message: "Board id ?"
+      type: "input"
     },
     {
-      type: "input",
+      message: "Board token ?",
       name: "token",
-      message: "Board token ?"
+      type: "input"
     },
     {
-      type: "input",
+      message: "Output Directory ?",
       name: "outputDir",
-      message: "Output Directory ?"
+      type: "input"
     },
     {
-      type: "input",
+      message: "Output Format ?",
       name: "outputFormat",
-      message: "Output Format ?"
+      type: "input"
     }
   ];
   const response = await prompt(qustions);
   return response;
 }
 
-//API CALL EXAMPLE
+// API CALL EXAMPLE
 // const color = getColors(TOKEN, "gFmmbJ0648oZLD2Y0arRLuy2");
 // color
 //   .then(res => saveColor("./", res))
