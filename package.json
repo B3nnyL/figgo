@@ -1,7 +1,7 @@
 {
   "name": "fig-ma",
   "version": "0.1.0",
-  "description": "CLI tool where your design took stay up to date with Figma",
+  "description": "CLI tool where your design tokens stay up to date with your Figma design styleguide",
   "main": "./dist/cli.js",
   "scripts": {
     "lint": "tslint -c tslint.json -p tsconfig.json",
@@ -18,8 +18,8 @@
     "UI",
     "Utility"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Shuying Lin <ciao@sylin.me>",
+  "license": "MIT",
   "dependencies": {
     "@types/dotenv": "^6.1.0",
     "chalk": "^2.4.2",
@@ -27,6 +27,7 @@
     "dotenv": "^6.2.0",
     "enquirer": "^2.3.0",
     "fs": "0.0.1-security",
+    "meow": "^5.0.0",
     "node-fetch": "^2.3.0",
     "os": "^0.1.1",
     "path": "^0.12.7",
