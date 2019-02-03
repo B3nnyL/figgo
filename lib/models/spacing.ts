@@ -2,7 +2,7 @@ export default class Spacing {
   private name: string;
   private value: number;
   constructor(name: string, value: number) {
-    this.name = name.replace(/\s+/g, "-").toUpperCase();
+    this.name = name.replace(/\s+/g, "_").toUpperCase();
     this.value = value;
   }
   get cssValue() {
@@ -10,6 +10,7 @@ export default class Spacing {
   }
 
   get JSONValue() {
-    return `export const ${this.name}= ${this.value.toFixed(2)}px;`;
+    const name = this.name.replace(/-/g, "_");
+    return `export const ${name} = '${this.value.toFixed(2)}px';`;
   }
 }

@@ -25,7 +25,7 @@ export default class Typography {
   }
   get CSSFontFamily(): string {
     const handler = `${this.name}-FONT-FAMILY`;
-    return `$${handler}: ${this.fontFamily};`;
+    return `$${handler}: '${this.fontFamily}';`;
   }
   get CSSFontWeight(): string {
     const handler = `${this.name}-FONT-WEIGHT`;
@@ -44,23 +44,28 @@ export default class Typography {
     return `$${handler}: ${this.lineHeight.toFixed(2)}px;`;
   }
   get JSONFontFamily(): string {
-    const handler = `${this.name}-FONT-FAMILY`;
-    return `export const ${handler}= ${this.fontFamily};`;
+    const name = this.name.replace(/-/g, "_");
+    const handler = `${name}_FONT_FAMILY`;
+    return `export const ${handler} = '${this.fontFamily}';`;
   }
   get JSONFontWeight(): string {
-    const handler = `${this.name}-FONT-WEIGHT`;
-    return `export const ${handler}= ${this.fontWeight};`;
+    const name = this.name.replace(/-/g, "_");
+    const handler = `${name}_FONT_WEIGHT`;
+    return `export const ${handler} = ${this.fontWeight};`;
   }
   get JSONFontSize(): string {
-    const handler = `${this.name}-FONT-SIZE`;
-    return `export const ${handler}= ${this.fontSize.toFixed(2)}px;`;
+    const name = this.name.replace(/-/g, "_");
+    const handler = `${name}_FONT_SIZE`;
+    return `export const ${handler} = ${this.fontSize.toFixed(2)}px;`;
   }
   get JSONLetterSpacing(): string {
-    const handler = `${this.name}-LETTER-SPACING`;
-    return `export const ${handler}= ${this.letterSpacing.toFixed(2)}px;`;
+    const name = this.name.replace(/-/g, "_");
+    const handler = `${name}_LETTER-SPACING`;
+    return `export const ${handler} = ${this.letterSpacing.toFixed(2)}px;`;
   }
   get JSONLineHeight(): string {
-    const handler = `${this.name}-LINE-HEIGHT`;
-    return `export const ${handler}= ${this.lineHeight.toFixed(2)}px;`;
+    const name = this.name.replace(/-/g, "_");
+    const handler = `${name}_LINE_HEIGHT`;
+    return `export const ${handler} = ${this.lineHeight.toFixed(2)}px;`;
   }
 }

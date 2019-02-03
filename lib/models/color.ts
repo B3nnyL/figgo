@@ -35,7 +35,8 @@ export default class Color {
 
   get JSONColor(): string {
     const color = this.aFloat < 1 ? this.RGBA : this.HEX;
-    return `export const ${this.name}= ${color};`;
+    const name = this.name.replace(/-/g, "_");
+    return `export const ${name} = '${color}';`;
   }
 
   private rgbaIsValid(): boolean {
