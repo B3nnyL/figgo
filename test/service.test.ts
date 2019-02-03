@@ -1,4 +1,4 @@
-import { TOKEN } from "../lib/envConfig";
+import { TOKEN, BOARD } from "../lib/envConfig";
 import { getAccount, getBoard, getColors } from "../lib/service";
 
 describe("service can ", () => {
@@ -10,16 +10,15 @@ describe("service can ", () => {
   });
 
   test("get board", () => {
-    getBoard(TOKEN, "gFmmbJ0648oZLD2Y0arRLuy2").then(res => {
+    getBoard(TOKEN, BOARD).then(res => {
       const result = res.name;
       console.log(result);
-      expect(result).toBe("Lustigt");
+      expect(result).toBe("Figgo");
     });
   });
 
   test("get colors", () => {
-    getColors(TOKEN, "gFmmbJ0648oZLD2Y0arRLuy2").then(res => {
-      const result = res;
+    getColors(TOKEN, BOARD).then(res => {
       expect(res).toBe("23");
     });
   });
