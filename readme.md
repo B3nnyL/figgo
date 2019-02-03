@@ -39,6 +39,6 @@ How to use
 ## TODOs
 
 - [ ] CLI listing board information
-- [ ] CLI specify board sync
+- [x] CLI specify board sync
 - [x] js output supports
 - [ ] Colored results
