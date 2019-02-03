@@ -127,9 +127,10 @@ async function InitQustionaire(): Promise<any> {
       type: "input"
     },
     {
+      choices: ["scss", "js"],
       message: "Output Format ?",
       name: "outputFormat",
-      type: "input"
+      type: "select"
     }
   ];
   const response = await prompt(qustions);
