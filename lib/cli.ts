@@ -1,9 +1,9 @@
-import meow from "meow";
-import { prompt } from "enquirer";
-import { saveColor } from "./helper";
-import { hints } from "./hint";
-import { getColors } from "./service";
 import Controller from "./controller";
+import { getColors } from "./service";
+import { hints } from "./hint";
+import { prompt } from "enquirer";
+import meow from "meow";
+import { saveColor } from "./helper";
 
 const cli = meow(hints, {
   flags: {
@@ -49,9 +49,9 @@ if (flags.sync) {
     const boards = controller.getStorage().getBoards();
     boards.forEach(board => {
       const { token, id, outputDir, outputFormat } = board;
-      const color = getColors(token, id);
+      const color = getColors(token, id, outputFormat);
       color
-        .then(res => saveColor(outputDir, res))
+        .then(res => saveColor(outputDir, res, outputFormat))
         .catch(e =>
           console.log("Can't get color assets, please check help", e)
         );

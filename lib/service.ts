@@ -48,7 +48,8 @@ async function auth(token: string, board: string): Promise<any> {
 
 export async function getColors(
   token: string,
-  board: string
+  board: string,
+  type: string
 ): Promise<string[]> {
   const data = await auth(token, board);
   const frames = data.document.children[0].children;
@@ -60,7 +61,16 @@ export async function getColors(
       const name = colorBlocks[i].name;
       const rgba = colorBlocks[i].fills[0].color;
       const newColor = new Color(name, rgba.r, rgba.g, rgba.b, rgba.a);
-      array.push(newColor.CssColor);
+      switch (type) {
+        case "scss":
+          array.push(newColor.CssColor);
+          break;
+        case "js":
+          array.push(newColor.JSONColor);
+          break;
+        default:
+          break;
+      }
     }
   }
   console.log(array);
@@ -69,7 +79,8 @@ export async function getColors(
 
 export async function getSpaces(
   token: string,
-  board: string
+  board: string,
+  type: string
 ): Promise<string[]> {
   const data = await auth(token, board);
   const frames = data.document.children[0].children;
@@ -81,7 +92,16 @@ export async function getSpaces(
       const name = spaceBlocks[i].name;
       const value = spaceBlocks[i].children[0].absoluteBoundingBox.width;
       const newSpace = new Space(name, value);
-      array.push(newSpace.cssValue);
+      switch (type) {
+        case "scss":
+          array.push(newSpace.cssValue);
+          break;
+        case "js":
+          array.push(newSpace.JSONValue);
+          break;
+        default:
+          break;
+      }
     }
   }
   console.log(array);
@@ -90,7 +110,8 @@ export async function getSpaces(
 
 export async function getTypographics(
   token: string,
-  board: string
+  board: string,
+  type: string
 ): Promise<string[]> {
   const data = await auth(token, board);
   const frames = data.document.children[0].children;
@@ -118,13 +139,28 @@ export async function getTypographics(
         letterSpacing,
         lineHeightPx
       );
-      array.push(
-        newTypo.CSSFontFamily,
-        newTypo.CSSFontSize,
-        newTypo.CSSFontWeight,
-        newTypo.CSSLetterSpacing,
-        newTypo.CSSLineHeight
-      );
+      switch (type) {
+        case "scss":
+          array.push(
+            newTypo.CSSFontFamily,
+            newTypo.CSSFontSize,
+            newTypo.CSSFontWeight,
+            newTypo.CSSLetterSpacing,
+            newTypo.CSSLineHeight
+          );
+          break;
+        case "js":
+          array.push(
+            newTypo.JSONFontFamily,
+            newTypo.JSONFontSize,
+            newTypo.JSONFontWeight,
+            newTypo.JSONLetterSpacing,
+            newTypo.JSONLineHeight
+          );
+          break;
+        default:
+          break;
+      }
     }
   }
   console.log(array);

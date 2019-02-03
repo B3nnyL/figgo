@@ -40,5 +40,5 @@ How to use
 
 - [ ] CLI listing board information
 - [ ] CLI specify board sync
-- [ ] js output supports
+- [x] js output supports
 - [ ] Colored results

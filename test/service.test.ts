@@ -1,4 +1,4 @@
-import { TOKEN, BOARD } from "../lib/envConfig";
+import { BOARD, TOKEN } from "../lib/envConfig";
 import { getAccount, getBoard, getColors } from "../lib/service";
 
 describe("service can ", () => {
@@ -18,7 +18,7 @@ describe("service can ", () => {
   });
 
   test("get colors", () => {
-    getColors(TOKEN, BOARD).then(res => {
+    getColors(TOKEN, BOARD, "scss").then(res => {
       expect(res).toBe("23");
     });
   });
