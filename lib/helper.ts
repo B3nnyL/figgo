@@ -2,19 +2,52 @@ import * as fs from "fs";
 import { join } from "path";
 
 // save files
-export function saveColor(outDir: string, colors: string[]) {
-  const dist = join(outDir, "_colorToken.scss");
-  fs.writeFileSync(dist, colors.join("\n"), "utf-8");
+export function saveColor(outDir: string, colors: string[], type: string) {
+  switch (type) {
+    case "scss":
+      const scssContent = join(outDir, "_colorToken.scss");
+      fs.writeFileSync(scssContent, colors.join("\n"), "utf-8");
+      break;
+    case "js":
+      const jsContent = join(outDir, "colorToken.js");
+      fs.writeFileSync(jsContent, colors.join("\n"), "utf-8");
+      break;
+    default:
+      console.log(`Format ${type} is not supported for color`);
+      break;
+  }
 }
 
-export function saveSpaces(outDir: string, spaces: string[]) {
-  const dist = join(outDir, "_spaceToken.scss");
-  fs.writeFileSync(dist, spaces.join("\n"), "utf-8");
+export function saveSpaces(outDir: string, spaces: string[], type: string) {
+  switch (type) {
+    case "scss":
+      const scssContent = join(outDir, "_spaceToken.scss");
+      fs.writeFileSync(scssContent, spaces.join("\n"), "utf-8");
+      break;
+    case "js":
+      const jsContent = join(outDir, "spaceToken.js");
+      fs.writeFileSync(jsContent, spaces.join("\n"), "utf-8");
+      break;
+    default:
+      console.log(`Format ${type} is not supported for spacing`);
+      break;
+  }
 }
 
-export function saveTypos(outDir: string, typos: string[]) {
-  const dist = join(outDir, "_typographicToken.scss");
-  fs.writeFileSync(dist, typos.join("\n"), "utf-8");
+export function saveTypos(outDir: string, typos: string[], type: string) {
+  switch (type) {
+    case "scss":
+      const scssContent = join(outDir, "_typoToken.scss");
+      fs.writeFileSync(scssContent, typos.join("\n"), "utf-8");
+      break;
+    case "js":
+      const jsContent = join(outDir, "typoToken.js");
+      fs.writeFileSync(jsContent, typos.join("\n"), "utf-8");
+      break;
+    default:
+      console.log(`Format ${type} is not supported for typography`);
+      break;
+  }
 }
 
 // covert float number to integer
