@@ -1,17 +1,28 @@
-import * as fs from "fs";
-import { join } from "path";
-
-export function saveColor(outDir: string, colors: string[]) {
-  const dist = join(outDir, "_colorToken.scss");
-  fs.writeFileSync(dist, colors.join("\n"), "utf-8");
-}
-
-export function saveSpaces(outDir: string, spaces: string[]) {
-  const dist = join(outDir, "_spaceToken.scss");
-  fs.writeFileSync(dist, spaces.join("\n"), "utf-8");
-}
-
-export function saveTypos(outDir: string, typos: string[]) {
-  const dist = join(outDir, "_typographicToken.scss");
-  fs.writeFileSync(dist, typos.join("\n"), "utf-8");
+import Board from "./models/board";
+import Storage from "./storage";
+export default class Controller {
+  private storage: Storage;
+  constructor() {
+    this.storage = new Storage();
+  }
+  public saveBoard(
+    bn: string,
+    id: string,
+    outputDir: string,
+    outputFormat: string,
+    token: string
+  ) {
+    const newBoard = new Board(bn);
+    this.storage.appendBoards(newBoard, bn);
+    this.storage.setBoardId(id, bn);
+    this.storage.setBoardOutputDir(outputDir, bn);
+    this.storage.setBoardOutputFormat(outputFormat, bn);
+    this.storage.setBoardToken(token, bn);
+    if (this.storage.isBoardExisted(bn)) {
+      console.log(`board ${bn} is existed`);
+    }
+  }
+  public getStorage(): Storage {
+    return this.storage;
+  }
 }
