@@ -8,16 +8,16 @@ export default class Board {
     this.boardName = boardName;
   }
 
-  setId(id) {
+  public setId(id) {
     this.id = id;
   }
-  setOutputDir(outputDir: string) {
+  public setOutputDir(outputDir: string) {
     this.outputDir = outputDir;
   }
-  setOutputFormat(outputFormat: string) {
+  public setOutputFormat(outputFormat: string) {
     this.outputFormat = outputFormat;
   }
-  setToken(token: string) {
+  public setToken(token: string) {
     this.token = token;
   }
 }
