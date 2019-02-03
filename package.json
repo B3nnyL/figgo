@@ -1,15 +1,23 @@
 {
   "name": "fig-ma",
   "version": "0.1.0",
-  "description": "CLI tool where your design tokens stay up to date with your Figma design styleguide",
-  "main": "./dist/cli.js",
+  "description": "A CLI tool make your design tokens stay up to date with your Figma design styleguide",
+  "main": "dist/cli.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/B3nnyL/figgo"
+  },
+  "bugs": {
+    "url": "https://github.com/B3nnyL/figgo/issues"
+  },
+  "homepage": "https://github.com/B3nnyL/figgo",
   "scripts": {
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "pre:test": "npm run lint",
     "test": "NODE_ENV=test jest --verbose=false",
     "pre:build": "npm run lint && npm run clean",
     "build": "tsc",
-    "start": "npm run build && nodemon ./dist/cli.js",
+    "start": "npm run build && node ./dist/cli.js",
     "dev": "NODE_ENV=dev ts-node ./lib/cli.ts",
     "clean": "rimraf ./dist"
   },

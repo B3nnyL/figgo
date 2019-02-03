@@ -44,7 +44,7 @@ How to use
 
 ## TODOs
 
-- [ ] CLI listing board information
+- [x] CLI listing board information
 - [x] CLI specify board sync
 - [x] js output supports
 - [ ] CLI edit board info
