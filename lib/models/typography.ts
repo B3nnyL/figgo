@@ -43,4 +43,24 @@ export default class Typography {
     const handler = `${this.name}-LINE-HEIGHT`;
     return `$${handler}: ${this.lineHeight.toFixed(2)}px;`;
   }
+  get JSONFontFamily(): string {
+    const handler = `${this.name}-FONT-FAMILY`;
+    return `export const ${handler}= ${this.fontFamily};`;
+  }
+  get JSONFontWeight(): string {
+    const handler = `${this.name}-FONT-WEIGHT`;
+    return `export const ${handler}= ${this.fontWeight};`;
+  }
+  get JSONFontSize(): string {
+    const handler = `${this.name}-FONT-SIZE`;
+    return `export const ${handler}= ${this.fontSize.toFixed(2)}px;`;
+  }
+  get JSONLetterSpacing(): string {
+    const handler = `${this.name}-LETTER-SPACING`;
+    return `export const ${handler}= ${this.letterSpacing.toFixed(2)}px;`;
+  }
+  get JSONLineHeight(): string {
+    const handler = `${this.name}-LINE-HEIGHT`;
+    return `export const ${handler}= ${this.lineHeight.toFixed(2)}px;`;
+  }
 }

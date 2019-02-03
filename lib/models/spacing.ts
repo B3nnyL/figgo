@@ -8,4 +8,8 @@ export default class Spacing {
   get cssValue() {
     return `$${this.name}: ${this.value.toFixed(2)}px;`;
   }
+
+  get JSONValue() {
+    return `export const ${this.name}= ${this.value.toFixed(2)}px;`;
+  }
 }
