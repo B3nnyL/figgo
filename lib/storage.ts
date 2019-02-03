@@ -42,6 +42,9 @@ export default class Storage {
   getBoard(bn: string): Board {
     return this.boards.filter(board => board.boardName === bn)[0];
   }
+  getBoards(): Array<Board> {
+    return this.boards;
+  }
 
   private saveFile(target: Board, bn: string) {
     const file = join(this.storageDir, "config.json");
