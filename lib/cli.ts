@@ -35,16 +35,27 @@ const cli = meow(hints, {
 });
 
 const { input, flags } = cli;
-console.log(input, flags);
 const controller = new Controller();
 
 if (flags.list) {
-  console.log("listing...");
+  console.log("Listing...");
+  controller.getStorage().setBoards();
+  const boards = controller.getStorage().getBoards();
+  if (boards.length < 1) {
+    console.log("No boards is stored with Figgo");
+  } else {
+    boards.map((board, i) =>
+      console.log(`
+    Board ${i + 1} Name: ${board.boardName} \n
+    Token Directory: ${board.outputDir}\n
+    Token Format: ${board.outputFormat}\n`)
+    );
+  }
 }
 
 if (flags.sync) {
+  console.log("Sync...");
   if (input.length < 1) {
-    console.log("sync...", flags.sync);
     controller.getStorage().setBoards();
     const boards = controller.getStorage().getBoards();
     boards.forEach(board => {
@@ -63,7 +74,6 @@ if (flags.sync) {
         .catch(e => console.log(e));
     });
   } else {
-    console.log("sync...");
     controller.getStorage().setBoards();
     const boards = input.map(bn => controller.getStorage().getBoard(bn));
     boards.forEach(board => {
@@ -85,13 +95,13 @@ if (flags.sync) {
 }
 
 if (flags.remove) {
-  console.log("remove...", flags.remove);
+  console.log(`Removing...`);
   controller.getStorage().setBoards();
   controller.getStorage().removeBoard(flags.remove);
 }
 
 if (flags.init) {
-  console.log("init", flags.init);
+  console.log("init...");
   controller.getStorage().setBoards();
   if (input.length < 1) {
     InitQustionaire().then(res => {
@@ -107,28 +117,28 @@ if (flags.init) {
 async function InitQustionaire(): Promise<any> {
   const qustions = [
     {
-      message: "Board name ?",
+      message: "Please name your Figma file.",
       name: "boardName",
       type: "input"
     },
     {
-      message: "Board id ?",
+      message: "Please provide your Figma file ID.",
       name: "id",
       type: "input"
     },
     {
-      message: "Board token ?",
+      message: "Please provide your Figma personal access token.",
       name: "token",
       type: "input"
     },
     {
-      message: "Output Directory ?",
+      message: "Please provide your token directory.",
       name: "outputDir",
       type: "input"
     },
     {
       choices: ["scss", "js"],
-      message: "Output Format ?",
+      message: "Please choose your token format.",
       name: "outputFormat",
       type: "select"
     }
