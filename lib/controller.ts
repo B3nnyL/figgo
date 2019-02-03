@@ -18,9 +18,6 @@ export default class Controller {
     this.storage.setBoardOutputDir(outputDir, bn);
     this.storage.setBoardOutputFormat(outputFormat, bn);
     this.storage.setBoardToken(token, bn);
-    if (this.storage.isBoardExisted(bn)) {
-      console.log(`board ${bn} is existed`);
-    }
   }
   public getStorage(): Storage {
     return this.storage;
