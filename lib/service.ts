@@ -31,10 +31,7 @@ export async function getBoard(token: string, board: string): Promise<IBoard> {
   }
 }
 
-export async function getColors(
-  token: string,
-  board: string
-): Promise<string[]> {
+async function auth(token: string, board: string): Promise<any> {
   const url = `https://api.figma.com/v1/files/${board}`;
   let result;
   try {
@@ -45,8 +42,15 @@ export async function getColors(
   } catch (e) {
     console.log(e.json());
   }
-
   const data = await result.json();
+  return data;
+}
+
+export async function getColors(
+  token: string,
+  board: string
+): Promise<string[]> {
+  const data = await auth(token, board);
   const frames = data.document.children[0].children;
   const array = [];
   const colorFrame = frames.filter(frame => frame.name === "Palette");
@@ -67,13 +71,7 @@ export async function getSpaces(
   token: string,
   board: string
 ): Promise<string[]> {
-  const url = `https://api.figma.com/v1/files/${board}`;
-  const result = await fetch(url, {
-    headers: { "X-FIGMA-TOKEN": token },
-    method: "get"
-  });
-
-  const data = await result.json();
+  const data = await auth(token, board);
   const frames = data.document.children[0].children;
   const array = [];
   const spaceFrame = frames.filter(frame => frame.name === "Spaces");
@@ -94,13 +92,7 @@ export async function getTypographics(
   token: string,
   board: string
 ): Promise<string[]> {
-  const url = `https://api.figma.com/v1/files/${board}`;
-  const result = await fetch(url, {
-    headers: { "X-FIGMA-TOKEN": token },
-    method: "get"
-  });
-
-  const data = await result.json();
+  const data = await auth(token, board);
   const frames = data.document.children[0].children;
   const array = [];
   const typoFrame = frames.filter(frame => frame.name === "Typographic");
