@@ -1,9 +1,9 @@
 import Controller from "./controller";
-import { getColors } from "./service";
+import { getColors, getSpaces, getTypographics } from "./service";
 import { hints } from "./hint";
 import { prompt } from "enquirer";
 import meow from "meow";
-import { saveColor } from "./helper";
+import { saveColor, saveSpaces, saveTypos } from "./helper";
 
 const cli = meow(hints, {
   flags: {
@@ -49,12 +49,37 @@ if (flags.sync) {
     const boards = controller.getStorage().getBoards();
     boards.forEach(board => {
       const { token, id, outputDir, outputFormat } = board;
-      const color = getColors(token, id, outputFormat);
-      color
+      const colors = getColors(token, id, outputFormat);
+      const spaces = getSpaces(token, id, outputFormat);
+      const typos = getTypographics(token, id, outputFormat);
+      colors
         .then(res => saveColor(outputDir, res, outputFormat))
-        .catch(e =>
-          console.log("Can't get color assets, please check help", e)
-        );
+        .catch(e => console.log(e));
+      spaces
+        .then(res => saveSpaces(outputDir, res, outputFormat))
+        .catch(e => console.log(e));
+      typos
+        .then(res => saveTypos(outputDir, res, outputFormat))
+        .catch(e => console.log(e));
+    });
+  } else {
+    console.log("sync...");
+    controller.getStorage().setBoards();
+    const boards = input.map(bn => controller.getStorage().getBoard(bn));
+    boards.forEach(board => {
+      const { token, id, outputDir, outputFormat } = board;
+      const colors = getColors(token, id, outputFormat);
+      const spaces = getSpaces(token, id, outputFormat);
+      const typos = getTypographics(token, id, outputFormat);
+      colors
+        .then(res => saveColor(outputDir, res, outputFormat))
+        .catch(e => console.log(e));
+      spaces
+        .then(res => saveSpaces(outputDir, res, outputFormat))
+        .catch(e => console.log(e));
+      typos
+        .then(res => saveTypos(outputDir, res, outputFormat))
+        .catch(e => console.log(e));
     });
   }
 }
