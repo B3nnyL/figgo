@@ -51,21 +51,21 @@ export default class Typography {
   get JSONFontWeight(): string {
     const name = this.name.replace(/-/g, "_");
     const handler = `${name}_FONT_WEIGHT`;
-    return `export const ${handler} = ${this.fontWeight};`;
+    return `export const ${handler} = '${this.fontWeight}';`;
   }
   get JSONFontSize(): string {
     const name = this.name.replace(/-/g, "_");
     const handler = `${name}_FONT_SIZE`;
-    return `export const ${handler} = ${this.fontSize.toFixed(2)}px;`;
+    return `export const ${handler} = '${this.fontSize.toFixed(2)}px';`;
   }
   get JSONLetterSpacing(): string {
     const name = this.name.replace(/-/g, "_");
-    const handler = `${name}_LETTER-SPACING`;
-    return `export const ${handler} = ${this.letterSpacing.toFixed(2)}px;`;
+    const handler = `${name}_LETTER_SPACING`;
+    return `export const ${handler} = '${this.letterSpacing.toFixed(2)}px';`;
   }
   get JSONLineHeight(): string {
     const name = this.name.replace(/-/g, "_");
     const handler = `${name}_LINE_HEIGHT`;
-    return `export const ${handler} = ${this.lineHeight.toFixed(2)}px;`;
+    return `export const ${handler} = '${this.lineHeight.toFixed(2)}px';`;
   }
 }
