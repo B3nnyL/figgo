@@ -13,11 +13,11 @@
   "homepage": "https://github.com/B3nnyL/figgo",
   "scripts": {
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "pre:test": "npm run lint",
+    "pre:test": "yarn lint",
     "test": "NODE_ENV=test jest --verbose=false",
-    "pre:build": "npm run lint && npm run clean",
+    "pre:build": "yarn lint && yarn clean",
     "build": "tsc",
-    "start": "npm run build && node ./dist/cli.js",
+    "start": "yarn build && node ./dist/cli.js",
     "dev": "NODE_ENV=dev ts-node ./lib/cli.ts",
     "clean": "rimraf ./dist"
   },
