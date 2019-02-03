@@ -1,6 +1,5 @@
-# Fig-ma
-
-Voluptate nisi enim excepteur anim esse velit id enim incididunt in deserunt laborum ad. Aute qui ea nulla eu Lorem consequat velit ad laboris cupidatat amet id. Sunt et ipsum ea nisi culpa dolore veniam ut Lorem pariatur. Cupidatat veniam cillum magna mollit ullamco esse dolor esse est elit sunt reprehenderit nisi quis. Cupidatat et in excepteur esse nostrud aliqua nostrud laboris ea nulla exercitation. Magna commodo ad excepteur eu dolore aliqua nulla incididunt tempor mollit dolor ad. Aliquip ullamco magna voluptate adipisicing voluptate do adipisicing est non.
+<h1 align="center">Figgo</h1>
+<p align="center">A CLI tool make your design tokens stay up to date with your Figma design styleguide</p>
 
 ## Dev
 
@@ -13,7 +12,12 @@ Voluptate nisi enim excepteur anim esse velit id enim incididunt in deserunt lab
 - build
   `yarn build`
 
-## Basic usage
+## Figma Guide
+
+- Create three frames naming `Typography`, `Colors` and `Spacing`.
+- Place your styleguide to frames accordingly. [Check out example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo)
+
+## Basic CLI Usage
 
 ```shell
 How to use
@@ -21,6 +25,7 @@ How to use
     Options
       --init, -i         Setup figma board
       --sync, -s         Sync tokens
+      --edit, -e         Edit board information (not ready yet)
       --list, -l         List boards
       --remove, -r       Remove board
       --help, -h         Show help message
@@ -28,6 +33,7 @@ How to use
     Examples
       $ figgo --init
       $ figgo --init board_name board_id output_directory output_format[js|scss]
+      $ figgp --edit board_name (not ready yet)
       $ figgo --list
       $ figgo --sync
       $ figgo --sync board_name
@@ -41,4 +47,6 @@ How to use
 - [ ] CLI listing board information
 - [x] CLI specify board sync
 - [x] js output supports
-- [ ] Colored results
+- [ ] CLI edit board info
+- [ ] Well-formatted results
+- [ ] Screenshots
