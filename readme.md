@@ -7,11 +7,11 @@ Voluptate nisi enim excepteur anim esse velit id enim incididunt in deserunt lab
 - instalation
   `npm i`
 - development
-  `npm run start [options]`
+  `yarn start [options]`
 - test
-  `npm run test`
+  `yarn test`
 - build
-  `npm build`
+  `yarn build`
 
 ## Basic usage
 
@@ -27,7 +27,7 @@ How to use
       --version, -v      Show installed version
     Examples
       $ figgo --init
-      $ figgo --init board_name board_id output_directory output_format[json|scss]
+      $ figgo --init board_name board_id output_directory output_format[js|scss]
       $ figgo --list
       $ figgo --sync
       $ figgo --sync board_name
@@ -38,5 +38,7 @@ How to use
 
 ## TODOs
 
-- [] CLI
-- [] JSON supports
+- [ ] CLI listing board information
+- [ ] CLI specify board sync
+- [ ] js output supports
+- [ ] Colored results
