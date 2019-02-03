@@ -34,8 +34,9 @@ export default class Storage {
       this.boards.push(newBoard);
       const file = join(this.storageDir, "config.json");
       fs.writeFileSync(file, JSON.stringify({ boards: this.boards }));
+      console.log(`Board ${bn} is added to Figgo`);
     } else {
-      console.log(`board ${bn} is existed`);
+      console.log(`Board ${bn} is already existed`);
     }
   }
 
@@ -94,6 +95,7 @@ export default class Storage {
       const filtered = formatted.boards.filter(board => board.boardName !== bn);
       this.boards = filtered;
       fs.writeFileSync(file, JSON.stringify({ boards: filtered }));
+      console.log(`Removed board ${bn}`);
     } else {
       console.log(`board ${bn} isn't existed`);
     }
@@ -122,7 +124,6 @@ export default class Storage {
     if (this.isStorageDirExisted()) {
       const file = join(this.storageDir, "config.json");
       const isExist = fs.existsSync(file);
-      console.log(isExist);
       return isExist;
     }
     return false;
