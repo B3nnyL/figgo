@@ -1,21 +1,14 @@
 <h1 align="center">Figgo</h1>
 <p align="center">A CLI tool make your design tokens stay up to date with your Figma design styleguide</p>
 
-## Dev
+## Install Figgo
 
-- instalation
-  `yarn install`
-- development
-  `yarn start [options]`
-- test
-  `yarn test`
-- build
-  `yarn build`
+`npm i figgo -g`
 
 ## Figma Guide
 
-- Create three frames naming `Typography`, `Colors` and `Spacing`.
-- Place your styleguide to frames accordingly. [Check out example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo)
+- Create three frames named as `Typography`, `Palette` and `Space`.
+- Place your design styleguide to frames following this [Example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo)
 
 ## Basic CLI Usage
 
@@ -42,11 +35,34 @@ How to use
       $ figgo --version
 ```
 
+## Dev
+
+- Installation
+  `yarn install`
+- development
+  `yarn start [options]`
+- test
+  `yarn test`
+- build
+  `yarn build`
+  
+  
+## CHANGELOGS
+- 0.1.1 🚀 Alive
+- 0.1.2 ✍️ Readme
+- 0.1.3 🛠 Fix minor issues
+  
 ## TODOs
 
 - [x] CLI listing board information
 - [x] CLI specify board sync
 - [x] js output supports
-- [ ] CLI edit board info
-- [ ] Well-formatted results
-- [ ] Screenshots
+- [ ] Edit Figma board info from CLI
+- [ ] Well-formatted and styled output in terminal 
+- [ ] Screenshots and documentation
+
+## License
+MIT
+
+## Credits
+[Figma](https://www.figma.com)
