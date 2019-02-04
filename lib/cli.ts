@@ -146,21 +146,3 @@ async function InitQustionaire(): Promise<any> {
   const response = await prompt(qustions);
   return response;
 }
-
-// API CALL EXAMPLE
-// const color = getColors(TOKEN, "gFmmbJ0648oZLD2Y0arRLuy2");
-// color
-//   .then(res => saveColor("./", res))
-//   .catch(e => console.log("Can't get color assets, please check help"));
-
-// const space = getSpaces(TOKEN, "gFmmbJ0648oZLD2Y0arRLuy2");
-// space
-//   .then(res => saveSpaces("./", res))
-//   .catch(e => console.log("Can't get space assets, please check help"));
-
-// const typo = getTypographics(TOKEN, "gFmmbJ0648oZLD2Y0arRLuy2");
-// typo
-//   .then(res => saveTypos("./", res))
-//   .catch(e => console.log("Can't get typography assets, please check help"));
-
-// // Promise.all([color, space, typo]).then(res => console.log("res", res));
