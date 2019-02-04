@@ -5,12 +5,14 @@ import { join } from "path";
 export function saveColor(outDir: string, colors: string[], type: string) {
   switch (type) {
     case "scss":
-      const scssContent = join(outDir, "_colorToken.scss");
-      fs.writeFileSync(scssContent, colors.join("\n"), "utf-8");
+      const scssDist = join(outDir, "_colorToken.scss");
+      fs.writeFileSync(scssDist, colors.join("\n"), "utf-8");
+      console.log(`🎨 Color tokens are updated at ${scssDist}`);
       break;
     case "js":
-      const jsContent = join(outDir, "colorToken.js");
-      fs.writeFileSync(jsContent, colors.join("\n"), "utf-8");
+      const jsDist = join(outDir, "colorToken.js");
+      fs.writeFileSync(jsDist, colors.join("\n"), "utf-8");
+      console.log(`🎨 Color tokens are updated at ${jsDist}`);
       break;
     default:
       console.log(`Format ${type} is not supported for color`);
@@ -21,12 +23,14 @@ export function saveColor(outDir: string, colors: string[], type: string) {
 export function saveSpaces(outDir: string, spaces: string[], type: string) {
   switch (type) {
     case "scss":
-      const scssContent = join(outDir, "_spaceToken.scss");
-      fs.writeFileSync(scssContent, spaces.join("\n"), "utf-8");
+      const scssDist = join(outDir, "_spaceToken.scss");
+      fs.writeFileSync(scssDist, spaces.join("\n"), "utf-8");
+      console.log(`🛰 Spacing tokens are updated at ${scssDist}`);
       break;
     case "js":
-      const jsContent = join(outDir, "spaceToken.js");
-      fs.writeFileSync(jsContent, spaces.join("\n"), "utf-8");
+      const jsDist = join(outDir, "spaceToken.js");
+      fs.writeFileSync(jsDist, spaces.join("\n"), "utf-8");
+      console.log(`🛰 Spacing tokens are updated at ${jsDist}`);
       break;
     default:
       console.log(`Format ${type} is not supported for spacing`);
@@ -37,12 +41,14 @@ export function saveSpaces(outDir: string, spaces: string[], type: string) {
 export function saveTypos(outDir: string, typos: string[], type: string) {
   switch (type) {
     case "scss":
-      const scssContent = join(outDir, "_typoToken.scss");
-      fs.writeFileSync(scssContent, typos.join("\n"), "utf-8");
+      const scssDist = join(outDir, "_typoToken.scss");
+      fs.writeFileSync(scssDist, typos.join("\n"), "utf-8");
+      console.log(`✍️ Typography tokens are updated at ${scssDist}`);
       break;
     case "js":
-      const jsContent = join(outDir, "typoToken.js");
-      fs.writeFileSync(jsContent, typos.join("\n"), "utf-8");
+      const jsDist = join(outDir, "typoToken.js");
+      fs.writeFileSync(jsDist, typos.join("\n"), "utf-8");
+      console.log(`✍️ Typography tokens are updated at ${jsDist}`);
       break;
     default:
       console.log(`Format ${type} is not supported for typography`);
