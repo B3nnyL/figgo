@@ -1,13 +1,14 @@
+import Board from "../lib/models/board";
+import { DIR } from "../lib/envConfig";
 import rimraf from "rimraf";
 import Storage from "../lib/storage";
-import Board from "../lib/models/board";
 
 const TOKEN = "23333";
 const board = "my-board";
 const outputDir = "./fakepath/me";
 
 beforeAll(() => {
-  rimraf("~/.figgo", () => {
+  rimraf(DIR, () => {
     console.log("clean up");
   });
 });
@@ -15,17 +16,17 @@ beforeAll(() => {
 describe("storage can ", () => {
   const myStorage = new Storage();
   myStorage.setBoards();
-  const board = new Board("fake-board");
+  const newBoard = new Board("fake-board");
   test("detect if dir is existed", () => {
     expect(myStorage.isStorageDirExisted()).toBeTruthy();
   });
 
   test("detect if file existed", () => {
-    expect(myStorage.isConfigFileExisted()).toBeTruthy();
+    expect(myStorage.isConfigFileExisted()).toBeFalsy();
   });
 
   test("detect can add board", () => {
-    myStorage.appendBoards(board, "fake-board");
+    myStorage.appendBoards(newBoard, "fake-board");
     expect(myStorage.isBoardExisted("fake-board")).toBeTruthy();
   });
 
