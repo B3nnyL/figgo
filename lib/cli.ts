@@ -1,8 +1,10 @@
+#!/usr/bin/env node
+
 import Controller from "./controller";
 import { getColors, getSpaces, getTypographics } from "./service";
 import { hints } from "./hint";
 import { prompt } from "enquirer";
-import meow from "meow";
+import * as meow from "meow";
 import { saveColor, saveSpaces, saveTypos } from "./helper";
 
 const cli = meow(hints, {

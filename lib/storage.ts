@@ -9,7 +9,7 @@ export default class Storage {
   private storageDir: string;
 
   constructor() {
-    this.storageDir = join(os.homedir(), DIR);
+    this.storageDir = join(os.homedir(), ".figgo");
   }
 
   public setBoards() {
