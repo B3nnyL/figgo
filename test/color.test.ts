@@ -1,6 +1,6 @@
 import Color from "../lib/models/color";
 const fakeColor = {
-  name: "fake-color",
+  name: "fake_color",
   r: 0.8549019607843137,
   g: 0.6470588235294118,
   b: 0,
@@ -16,7 +16,7 @@ describe("color class ", () => {
     fakeColor.a
   );
   test("should set name with format", () => {
-    expect(color.formatedName).toBe("FAKE-COLOR");
+    expect(color.formatedName).toBe("FAKE_COLOR");
   });
   test("should get HEX ", () => {
     expect(color.HEX).toBe("#daa500");
@@ -27,6 +27,6 @@ describe("color class ", () => {
   });
 
   test("should return css string", () => {
-    expect(color.CssColor).toBe("$FAKE-COLOR: #daa500;");
+    expect(color.CssColor).toBe("$FAKE_COLOR: #daa500;");
   });
 });

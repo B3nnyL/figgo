@@ -23,7 +23,7 @@ describe("typography", () => {
 
   test("should return CSS formated font family", () => {
     expect(fakeTypo.CSSFontFamily).toBe(
-      "$FAKE-TYPO-FONT-FAMILY: Helvetica Neue;"
+      "$FAKE-TYPO-FONT-FAMILY: 'Helvetica Neue';"
     );
   });
 
