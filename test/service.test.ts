@@ -19,7 +19,7 @@ describe("service can ", () => {
 
   test("get colors", () => {
     getColors(TOKEN, BOARD, "scss").then(res => {
-      expect(res).toBe("23");
+      expect(res.length).toBe(16);
     });
   });
 });
