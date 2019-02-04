@@ -10,7 +10,7 @@
 ## Figma Guide
 
 - Create three frames named as `Typography`, `Palette` and `Space`.
-- Place your design styleguide to frames following this [Example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo)
+- Place your design styleguide to the frames by following this [Example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo)
 
 ## Basic CLI Usage
 
@@ -27,7 +27,11 @@ How to use
       --version, -v      Show installed version
     Examples
       $ figgo --init
+<<<<<<< HEAD
       $ figgo --init board_name board_id output_directory_absolute_path output_format[js|scss]
+=======
+      $ figgo --init board_name board_id output_directory output_format[js|scss] personal_access_token
+>>>>>>> 956e85f3db43e374e1d44eba368a76a90dee1a12
       $ figgp --edit board_name (not ready yet)
       $ figgo --list
       $ figgo --sync
@@ -48,7 +52,7 @@ How to use
 - build
   `yarn build`
 
-## CHANGELOGS
+## Changelogs
 
 - 0.1.1 🚀 Alive
 - 0.1.2 ✍️ Readme
