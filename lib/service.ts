@@ -40,7 +40,7 @@ async function auth(token: string, board: string): Promise<any> {
       method: "get"
     });
   } catch (e) {
-    console.log(e.json());
+    console.log(e);
   }
   const data = await result.json();
   return data;
@@ -73,7 +73,6 @@ export async function getColors(
       }
     }
   }
-  console.log(array);
   return array;
 }
 
@@ -85,7 +84,7 @@ export async function getSpaces(
   const data = await auth(token, board);
   const frames = data.document.children[0].children;
   const array = [];
-  const spaceFrame = frames.filter(frame => frame.name === "Spaces");
+  const spaceFrame = frames.filter(frame => frame.name === "Space");
   const spaceBlocks = spaceFrame[0].children;
   for (const i in spaceBlocks) {
     if (spaceBlocks) {
@@ -104,7 +103,6 @@ export async function getSpaces(
       }
     }
   }
-  console.log(array);
   return array;
 }
 
@@ -116,7 +114,7 @@ export async function getTypographics(
   const data = await auth(token, board);
   const frames = data.document.children[0].children;
   const array = [];
-  const typoFrame = frames.filter(frame => frame.name === "Typographic");
+  const typoFrame = frames.filter(frame => frame.name === "Typography");
   const typoBlocks = typoFrame[0].children.filter(
     blocks => blocks.type === "TEXT"
   );
@@ -163,6 +161,5 @@ export async function getTypographics(
       }
     }
   }
-  console.log(array);
   return array;
 }
