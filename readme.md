@@ -47,7 +47,7 @@ How to use
   `yarn build`
   
   
-## CHANGELOGS
+## Changelogs
 
 - 0.1.1 🚀 Alive
 - 0.1.2 ✍️ Readme
