@@ -1,6 +1,8 @@
 <h1 align="center">Figgo</h1>
 <p align="center">A CLI tool make your design tokens stay up to date with your Figma design styleguide</p>
 
+![img](assets/cover.png)
+
 ## Install Figgo
 
 `npm i figgo -g`
@@ -25,7 +27,7 @@ How to use
       --version, -v      Show installed version
     Examples
       $ figgo --init
-      $ figgo --init board_name board_id output_directory output_format[js|scss]
+      $ figgo --init board_name board_id output_directory_absolute_path output_format[js|scss]
       $ figgp --edit board_name (not ready yet)
       $ figgo --list
       $ figgo --sync
@@ -45,22 +47,21 @@ How to use
   `yarn test`
 - build
   `yarn build`
-  
-  
+
 ## CHANGELOGS
 
 - 0.1.1 🚀 Alive
 - 0.1.2 ✍️ Readme
 - 0.1.3 🛠 Fix minor issues
-  
+
 ## TODOs
 
 - [x] CLI listing board information
 - [x] CLI specify board sync
 - [x] js output supports
 - [ ] Edit Figma board info from CLI
-- [ ] Well-formatted and styled output in terminal 
-- [ ] Screenshots and documentation
+- [ ] Well-formatted and styled output in terminal
+- [ ] More Screenshots and documentation
 
 ## License
 
