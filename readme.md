@@ -35,7 +35,7 @@ How to use
       $ figgo --version
 ```
 
-## Dev
+## Dev Guide
 
 - Installation
   `yarn install`
@@ -48,6 +48,7 @@ How to use
   
   
 ## CHANGELOGS
+
 - 0.1.1 🚀 Alive
 - 0.1.2 ✍️ Readme
 - 0.1.3 🛠 Fix minor issues
@@ -62,7 +63,9 @@ How to use
 - [ ] Screenshots and documentation
 
 ## License
+
 MIT
 
 ## Credits
+
 [Figma](https://www.figma.com)
