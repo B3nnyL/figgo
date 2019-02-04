@@ -8,7 +8,7 @@
 ## Figma Guide
 
 - Create three frames named as `Typography`, `Palette` and `Space`.
-- Place your design styleguide to frames following this [Example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo)
+- Place your design styleguide to the frames by following this [Example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo)
 
 ## Basic CLI Usage
 
