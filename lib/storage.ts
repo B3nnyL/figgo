@@ -1,14 +1,15 @@
 import * as fs from "fs";
 import * as os from "os";
-import { join } from "path";
 import Board from "../lib/models/board";
+import { DIR } from "../lib/envConfig";
+import { join } from "path";
 
 export default class Storage {
   private boards: Board[] = [];
   private storageDir: string;
 
   constructor() {
-    this.storageDir = join(os.homedir(), ".figgo");
+    this.storageDir = join(os.homedir(), DIR);
   }
 
   public setBoards() {
