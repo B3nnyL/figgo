@@ -106,10 +106,14 @@ if (flags.init) {
   console.log("init...");
   controller.getStorage().setBoards();
   if (input.length < 1) {
-    InitQustionaire().then(res => {
-      const { boardName, id, outputDir, outputFormat, token } = res;
-      controller.saveBoard(boardName, id, outputDir, outputFormat, token);
-    });
+    InitQustionaire()
+      .then(res => {
+        const { boardName, id, outputDir, outputFormat, token } = res;
+        controller.saveBoard(boardName, id, outputDir, outputFormat, token);
+      })
+      .catch(error => {
+        console.log("An error occured, please try again");
+      });
   } else {
     const [boardName, id, outputDir, outputFormat, token] = input;
     controller.saveBoard(boardName, id, outputDir, outputFormat, token);
