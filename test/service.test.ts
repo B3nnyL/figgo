@@ -1,5 +1,6 @@
 import { BOARD, TOKEN } from "../lib/envConfig";
 import {
+  auth,
   getAccount,
   getBoard,
   getColors,
@@ -15,29 +16,28 @@ describe("service can ", () => {
     });
   });
 
-  test("get board", () => {
-    getBoard(TOKEN, BOARD).then(res => {
-      const result = res.name;
-      console.log(result);
-      expect(result).toBe("Figgo");
-    });
+  test("get auth", async () => {
+    const res = await auth(TOKEN, BOARD);
+    expect(res.name).toBe("Figgo");
   });
 
-  test("get colors", () => {
-    getColors(TOKEN, BOARD, "scss").then(res => {
-      expect(res.length).toBe(16);
-    });
+  test("get board", async () => {
+    const res = await getBoard(TOKEN, BOARD);
+    expect(res.name).toBe("Figgo");
   });
 
-  test("get spaces", () => {
-    getSpaces(TOKEN, BOARD, "scss").then(res => {
-      expect(res.length).toBe(4);
-    });
+  test("get colors", async () => {
+    const res = await getColors(TOKEN, BOARD, "scss");
+    expect(res.length).toBe(17);
   });
 
-  test("get typo", () => {
-    getTypographics(TOKEN, BOARD, "scss").then(res => {
-      expect(res.length).toBe(16);
-    });
+  test("get spaces", async () => {
+    const res = await getSpaces(TOKEN, BOARD, "scss");
+    expect(res.length).toBe(4);
+  });
+
+  test("get typo", async () => {
+    const res = await getTypographics(TOKEN, BOARD, "scss");
+    expect(res.length).toBe(35);
   });
 });
