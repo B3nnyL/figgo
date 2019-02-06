@@ -1,58 +1,76 @@
+import chalk from "chalk";
 import * as fs from "fs";
 import { join } from "path";
-
 // save files
 export function saveColor(outDir: string, colors: string[], type: string) {
-  switch (type) {
-    case "scss":
-      const scssDist = join(outDir, "_colorToken.scss");
-      fs.writeFileSync(scssDist, colors.join("\n"), "utf-8");
-      console.log(`🎨 Color tokens are updated at ${scssDist}`);
-      break;
-    case "js":
-      const jsDist = join(outDir, "colorToken.js");
-      fs.writeFileSync(jsDist, colors.join("\n"), "utf-8");
-      console.log(`🎨 Color tokens are updated at ${jsDist}`);
-      break;
-    default:
-      console.log(`Format ${type} is not supported for color`);
-      break;
+  if (colors !== undefined) {
+    switch (type) {
+      case "scss":
+        const scssDist = join(outDir, "_colorToken.scss");
+        fs.writeFileSync(scssDist, colors.join("\n"), "utf-8");
+        console.log(successLog(`🎨 Color tokens are updated at ${scssDist}`));
+        break;
+      case "js":
+        const jsDist = join(outDir, "colorToken.js");
+        fs.writeFileSync(jsDist, colors.join("\n"), "utf-8");
+        console.log(successLog(`🎨 Color tokens are updated at ${jsDist}`));
+        break;
+      default:
+        console.log(errorLog(`Format ${type} is not supported for color`));
+        break;
+    }
+  } else {
+    console.log(errorLog("no colors"));
   }
 }
 
 export function saveSpaces(outDir: string, spaces: string[], type: string) {
-  switch (type) {
-    case "scss":
-      const scssDist = join(outDir, "_spaceToken.scss");
-      fs.writeFileSync(scssDist, spaces.join("\n"), "utf-8");
-      console.log(`🛰 Spacing tokens are updated at ${scssDist}`);
-      break;
-    case "js":
-      const jsDist = join(outDir, "spaceToken.js");
-      fs.writeFileSync(jsDist, spaces.join("\n"), "utf-8");
-      console.log(`🛰 Spacing tokens are updated at ${jsDist}`);
-      break;
-    default:
-      console.log(`Format ${type} is not supported for spacing`);
-      break;
+  if (spaces !== undefined) {
+    switch (type) {
+      case "scss":
+        const scssDist = join(outDir, "_spaceToken.scss");
+        fs.writeFileSync(scssDist, spaces.join("\n"), "utf-8");
+        console.log(successLog(`🛰 Spacing tokens are updated at ${scssDist}`));
+        break;
+      case "js":
+        const jsDist = join(outDir, "spaceToken.js");
+        fs.writeFileSync(jsDist, spaces.join("\n"), "utf-8");
+        console.log(successLog(`🛰 Spacing tokens are updated at ${jsDist}`));
+        break;
+      default:
+        console.log(successLog(`Format ${type} is not supported for spacing`));
+        break;
+    }
+  } else {
+    console.log(errorLog("no spaces"));
   }
 }
 
 export function saveTypos(outDir: string, typos: string[], type: string) {
-  switch (type) {
-    case "scss":
-      const scssDist = join(outDir, "_typoToken.scss");
-      fs.writeFileSync(scssDist, typos.join("\n"), "utf-8");
-      console.log(`✍️ Typography tokens are updated at ${scssDist}`);
-      break;
-    case "js":
-      const jsDist = join(outDir, "typoToken.js");
-      fs.writeFileSync(jsDist, typos.join("\n"), "utf-8");
-      console.log(`✍️ Typography tokens are updated at ${jsDist}`);
-      break;
-    default:
-      console.log(`Format ${type} is not supported for typography`);
-      break;
+  if (typos !== undefined) {
+    switch (type) {
+      case "scss":
+        const scssDist = join(outDir, "_typoToken.scss");
+        fs.writeFileSync(scssDist, typos.join("\n"), "utf-8");
+        console.log(
+          successLog(`✍️ Typography tokens are updated at ${scssDist}`)
+        );
+        break;
+      case "js":
+        const jsDist = join(outDir, "typoToken.js");
+        fs.writeFileSync(jsDist, typos.join("\n"), "utf-8");
+        console.log(
+          successLog(`✍️ Typography tokens are updated at ${jsDist}`)
+        );
+        break;
+      default:
+        console.log(
+          successLog(`Format ${type} is not supported for typography`)
+        );
+        break;
+    }
+  } else {
+    console.log(errorLog("no spaces"));
   }
 }
 
@@ -89,4 +107,19 @@ export function rgbaToString(
   const gInt = floatToInt(g);
   const bInt = floatToInt(b);
   return `rgba(${rInt},${gInt},${bInt},${a.toFixed(2)})`;
+}
+
+export function errorLog(log: string): string {
+  const label = chalk.red("Error");
+  return `${label}  ${log}`;
+}
+
+export function successLog(log: string): string {
+  const label = chalk.cyan("Success");
+  return `${label}  ${log}`;
+}
+
+export function warningLog(log: string): string {
+  const label = chalk.bgYellowBright("Warning");
+  return `${label}  ${log}`;
 }
