@@ -1,5 +1,5 @@
 <h1 align="center">Figgo</h1>
-<p align="center">A CLI tool make your design tokens stay up to date with your Figma design styleguide</p>
+<p align="center">A CLI tool make your design tokens always stay up to date with your Figma design styleguide</p>
 
 ![img](assets/cover.png)
 
@@ -9,8 +9,17 @@
 
 ## Figma Guide
 
-- Create three frames named as `Typography`, `Palette` and `Space`.
-- Place your design styleguide to the frames by following this [Example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo)
+- Create three frames named as `Typography`, `Palette` and `Space` in your figma file.
+- Spread out your design styleguide examples to the frames. Follow this [figma example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo) for the best outcomes.
+- Grab the figma file's id.
+- Generate your personal token at `account setting`
+
+## Terminal Guide
+
+Assume you have already installed figgo locally or globally...
+
+- run `figgo --init` and answer few setup questions, where you will leave file id and personal token with Figgo
+- Tied your belt and type `figgo --sync`, let tokens store in the location you wish.
 
 ## Basic CLI Usage
 
@@ -27,7 +36,7 @@ How to use
       --version, -v      Show installed version
     Examples
       $ figgo --init
-      $ figgo --init board_name board_id output_directory_absolute_path output_format[js|scss]
+      $ figgo --init board_name board_id output_dir_absolute_path output_format[js|scss] personal_token
       $ figgp --edit board_name (not ready yet)
       $ figgo --list
       $ figgo --sync
@@ -36,6 +45,10 @@ How to use
       $ figgo --help
       $ figgo --version
 ```
+
+## Edit configuration
+
+Edit board from `config.js` in `~/.figgo` folder. You can also manually add Figma board through editting this file.
 
 ## Dev Guide
 
@@ -60,7 +73,7 @@ How to use
 - [x] CLI specify board sync
 - [x] js output supports
 - [ ] Edit Figma board info from CLI
-- [ ] Well-formatted and styled output in terminal
+- [x] Well-formatted and styled output in terminal
 - [ ] More Screenshots and documentation
 
 ## License
