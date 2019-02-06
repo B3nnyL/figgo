@@ -20,7 +20,7 @@ export function saveColor(outDir: string, colors: string[], type: string) {
         break;
     }
   } else {
-    console.log(errorLog("no colors"));
+    console.log(errorLog("No color token is updated"));
   }
 }
 
@@ -42,7 +42,7 @@ export function saveSpaces(outDir: string, spaces: string[], type: string) {
         break;
     }
   } else {
-    console.log(errorLog("no spaces"));
+    console.log(errorLog("No spacing token is updated"));
   }
 }
 
@@ -70,7 +70,7 @@ export function saveTypos(outDir: string, typos: string[], type: string) {
         break;
     }
   } else {
-    console.log(errorLog("no spaces"));
+    console.log(errorLog("No typography token is updated"));
   }
 }
 
