@@ -120,6 +120,11 @@ export function successLog(log: string): string {
 }
 
 export function warningLog(log: string): string {
-  const label = chalk.bgYellowBright("Warning");
+  const label = chalk.yellow("Warning");
   return `${label}  ${log}`;
+}
+
+export function urlFactory(id: string): string {
+  const url = `https://www.figma.com/file/${id}`;
+  return url;
 }
