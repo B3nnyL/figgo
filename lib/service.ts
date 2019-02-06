@@ -55,7 +55,9 @@ export async function getColors(
   const frames = data.document.children[0].children;
   const array = [];
   const colorFrame = frames.filter(frame => frame.name === "Palette");
-  const colorBlocks = colorFrame[0].children;
+  const colorBlocks = colorFrame[0].children.filter(
+    block => block.type === "RECTANGLE"
+  );
   for (const i in colorBlocks) {
     if (colorBlocks[i].fills[0].type === "SOLID") {
       const name = colorBlocks[i].name;
