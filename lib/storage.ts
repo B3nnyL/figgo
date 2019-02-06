@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import * as os from "os";
 import Board from "../lib/models/board";
-import { DIR } from "../lib/envConfig";
 import { join } from "path";
+import { errorLog, successLog, urlFactory, warningLog } from "./helper";
 
 export default class Storage {
   private boards: Board[] = [];
@@ -35,9 +35,11 @@ export default class Storage {
       this.boards.push(newBoard);
       const file = join(this.storageDir, "config.json");
       fs.writeFileSync(file, JSON.stringify({ boards: this.boards }));
-      console.log(`Board ${bn} is added to Figgo`);
+      console.log(
+        successLog(`Board ${bn} (${urlFactory(newBoard.id)}) is added to Figgo`)
+      );
     } else {
-      console.log(`Board ${bn} is already existed`);
+      console.log(warningLog(`Board ${bn} is already existed`));
     }
   }
 
@@ -54,7 +56,7 @@ export default class Storage {
       target.outputDir = dir;
       this.saveFile(target, bn);
     } else {
-      console.log(`board ${bn} isn't existed`);
+      console.log(errorLog(`board ${bn} isn't existed`));
     }
   }
 
@@ -64,7 +66,7 @@ export default class Storage {
       target.outputFormat = format;
       this.saveFile(target, bn);
     } else {
-      console.log(`board ${bn} isn't existed`);
+      console.log(errorLog(`board ${bn} isn't existed`));
     }
   }
 
@@ -74,7 +76,7 @@ export default class Storage {
       target.token = token;
       this.saveFile(target, bn);
     } else {
-      console.log(`board ${bn} isn't existed`);
+      console.log(errorLog(`board ${bn} isn't existed`));
     }
   }
 
@@ -84,7 +86,7 @@ export default class Storage {
       target.id = id;
       this.saveFile(target, bn);
     } else {
-      console.log(`board ${bn} isn't existed`);
+      console.log(errorLog(`board ${bn} isn't existed`));
     }
   }
 
@@ -96,9 +98,9 @@ export default class Storage {
       const filtered = formatted.boards.filter(board => board.boardName !== bn);
       this.boards = filtered;
       fs.writeFileSync(file, JSON.stringify({ boards: filtered }));
-      console.log(`Removed board ${bn}`);
+      console.log(successLog(`Successfully removed board ${bn}`));
     } else {
-      console.log(`board ${bn} isn't existed`);
+      console.log(errorLog(`board ${bn} isn't existed`));
     }
   }
 
