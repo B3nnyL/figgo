@@ -15,11 +15,6 @@ switch (process.env.NODE_ENV) {
     board = process.env.DEV_BOARD;
     dir = process.env.DEV_DIR;
     break;
-  case "prod":
-    token = process.env.DEV_TOKEN;
-    board = process.env.DEV_BOARD;
-    dir = process.env.PROD_DIR;
-    break;
 }
 
 export const TOKEN = token;
