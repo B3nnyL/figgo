@@ -85,11 +85,14 @@ export async function getSpaces(
   const frames = data.document.children[0].children;
   const array = [];
   const spaceFrame = frames.filter(frame => frame.name === "Space");
-  const spaceBlocks = spaceFrame[0].children;
+  const spaceBlocks = spaceFrame[0].children.filter(
+    blocks => blocks.type === "RECTANGLE"
+  );
+
   for (const i in spaceBlocks) {
     if (spaceBlocks) {
       const name = spaceBlocks[i].name;
-      const value = spaceBlocks[i].children[0].absoluteBoundingBox.width;
+      const value = spaceBlocks[i].absoluteBoundingBox.width;
       const newSpace = new Space(name, value);
       switch (type) {
         case "scss":

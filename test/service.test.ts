@@ -1,5 +1,11 @@
 import { BOARD, TOKEN } from "../lib/envConfig";
-import { getAccount, getBoard, getColors } from "../lib/service";
+import {
+  getAccount,
+  getBoard,
+  getColors,
+  getSpaces,
+  getTypographics
+} from "../lib/service";
 
 describe("service can ", () => {
   test("get user info", () => {
@@ -19,6 +25,18 @@ describe("service can ", () => {
 
   test("get colors", () => {
     getColors(TOKEN, BOARD, "scss").then(res => {
+      expect(res.length).toBe(16);
+    });
+  });
+
+  test("get spaces", () => {
+    getSpaces(TOKEN, BOARD, "scss").then(res => {
+      expect(res.length).toBe(4);
+    });
+  });
+
+  test("get typo", () => {
+    getTypographics(TOKEN, BOARD, "scss").then(res => {
       expect(res.length).toBe(16);
     });
   });
