@@ -36,7 +36,7 @@ How to use
       --version, -v      Show installed version
     Examples
       $ figgo --init
-      $ figgo --init board_name board_id output_dir_absolute_path output_format[js|scss] personal_token
+      $ figgo --init board_name board_id output_absolute_path output_format(js|scss) figma_token
       $ figgp --edit board_name (not ready yet)
       $ figgo --list
       $ figgo --sync
