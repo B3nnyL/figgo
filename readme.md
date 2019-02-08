@@ -48,7 +48,7 @@ How to use
 
 ### Sync Token
 - Sync all
-    ![url](http://www.giphy.com/gifs/TgFp4BNx3GMFAay9SJ)
+    ![url](https://media.giphy.com/media/TgFp4BNx3GMFAay9SJ/giphy.gif)
 
 ## Edit configuration
 
