@@ -47,8 +47,7 @@ How to use
 ```
 
 ### Sync Token
-- Sync all
-    ![url](https://media.giphy.com/media/TgFp4BNx3GMFAay9SJ/giphy.gif)
+![url](https://media.giphy.com/media/TgFp4BNx3GMFAay9SJ/giphy.gif)
 
 ## Edit configuration
 
