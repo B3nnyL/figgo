@@ -10,15 +10,15 @@
 ## Figma Guide
 
 - Create three frames named as `Typography`, `Palette` and `Space` in your figma file.
-- Spread out your design styleguide examples to the frames. Follow this [figma example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo) for the best outcomes.
+- Spread out your typography, color and spacing examples to the frames. Follow this [figma example](https://www.figma.com/file/ULXceywc0RjE0MFYNgOiZDrl/Figgo) for the best outcomes.
 - Grab the figma file's id.
-- Generate your personal token at `account setting`
+- Generate your personal token at `account setting` and grab it.
 
 ## Terminal Guide
 
-Assume you have already installed figgo locally or globally...
+Assume you have already installed Figgo...
 
-- run `figgo --init` and answer few setup questions, where you will leave file id and personal token with Figgo
+- Run `figgo --init`, answer a few setup questions where you will leave file id and personal token with Figgo.
 - Tied your belt and type `figgo --sync`, let tokens store in the location you wish.
 
 ## Basic CLI Usage
@@ -36,7 +36,7 @@ How to use
       --version, -v      Show installed version
     Examples
       $ figgo --init
-      $ figgo --init board_name board_id output_dir_absolute_path output_format[js|scss] personal_token
+      $ figgo --init board_name board_id output_absolute_path output_format(js|scss) figma_token
       $ figgp --edit board_name (not ready yet)
       $ figgo --list
       $ figgo --sync
@@ -46,9 +46,12 @@ How to use
       $ figgo --version
 ```
 
+### Sync Token
+![url](https://media.giphy.com/media/TgFp4BNx3GMFAay9SJ/giphy.gif)
+
 ## Edit configuration
 
-Edit board from `config.js` in `~/.figgo` folder. You can also manually add Figma board through editting this file.
+Edit setup configuration from `config.js` in `~/.figgo` folder. You can also manually add Figma board through editting this file.
 
 ## Dev Guide
 
@@ -75,7 +78,7 @@ Edit board from `config.js` in `~/.figgo` folder. You can also manually add Figm
 - [x] js output supports
 - [ ] Edit Figma board info from CLI
 - [x] Well-formatted and styled output in terminal
-- [ ] More Screenshots and documentation
+- [ ] More screenshots and documentation
 
 ## License
 
