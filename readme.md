@@ -66,6 +66,7 @@ Edit board from `config.js` in `~/.figgo` folder. You can also manually add Figm
 - 0.1.1 🚀 Alive
 - 0.1.2 ✍️ Readme
 - 0.1.3 🛠 Fix minor issues
+- 0.1.5 🤠 Better UX
 
 ## TODOs
 
