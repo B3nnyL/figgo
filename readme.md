@@ -46,6 +46,10 @@ How to use
       $ figgo --version
 ```
 
+### Sync Token
+- Sync all
+    ![url](http://www.giphy.com/gifs/TgFp4BNx3GMFAay9SJ)
+
 ## Edit configuration
 
 Edit setup configuration from `config.js` in `~/.figgo` folder. You can also manually add Figma board through editting this file.
