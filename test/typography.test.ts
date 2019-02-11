@@ -23,7 +23,8 @@ describe("typography", () => {
 
   test("should return CSS formated font family", () => {
     expect(fakeTypo.CSSFontFamily).toBe(
-      "$FAKE-TYPO-FONT-FAMILY: 'Helvetica Neue';"
+      "$FAKE-TYPO-FONT-FAMILY: 'Helvetica Neue', -apple-system,BlinkMacSystemFont,Segoe UI,\
+    Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;"
     );
   });
 
