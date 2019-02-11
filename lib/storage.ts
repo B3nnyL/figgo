@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as os from "os";
-import Board from "../lib/models/board";
 import { join } from "path";
+import Board from "../lib/models/board";
 import { errorLog, successLog, urlFactory, warningLog } from "./helper";
 
 export default class Storage {
