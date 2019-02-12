@@ -20,7 +20,7 @@ Assume you have already installed Figgo...
 
 ### Global setup
 
-- Run `figgo --init`, answer a few setup questions where you will leave file id and personal token with Figgo. All configuration will save to `~/.figgo`. **_Note: output directory needs to be in absolute path._**
+- Run `figgo --init`, answer a few setup questions where you will leave file id and personal token with Figgo. All configuration will save to `~/.figgo`. **_Note: output directory needs to be absolute path._**
 - Tied your belt and type `figgo --sync`, let tokens store in the location you wish.
 - You may run `figgo --sync board_name` to update tokens selectively.
 
