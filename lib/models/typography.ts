@@ -25,8 +25,8 @@ export default class Typography {
   }
   get CSSFontFamily(): string {
     const handler = `${this.name}-FONT-FAMILY`;
-    const fontFamily = this.fontFamilyAddon(`'${this.fontFamily}'`);
-    return `$${handler}: '${fontFamily}';`;
+    const fontFamily = this.fontFamilyAddon(this.fontFamily);
+    return `$${handler}: ${fontFamily};`;
   }
   get CSSFontWeight(): string {
     const handler = `${this.name}-FONT-WEIGHT`;
@@ -48,7 +48,7 @@ export default class Typography {
     const name = this.name.replace(/-/g, "_");
     const fontFamily = this.fontFamilyAddon(`'${this.fontFamily}'`);
     const handler = `${name}_FONT_FAMILY`;
-    return `export const ${handler} = '${fontFamily}';`;
+    return `export const ${handler} = "${fontFamily}";`;
   }
   get JSONFontWeight(): string {
     const name = this.name.replace(/-/g, "_");
