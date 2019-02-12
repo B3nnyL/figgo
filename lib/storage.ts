@@ -12,7 +12,7 @@ export default class Storage {
 
   constructor() {
     this.storageDir = join(os.homedir(), ".figgo");
-    this.localDir = __dirname;
+    this.localDir = process.cwd();
     this.globalFile = join(this.storageDir, "config.json");
     this.localFile = join(this.localDir, "figgo.json");
   }
@@ -64,7 +64,9 @@ export default class Storage {
   public isLocalConfigFileExisted(): boolean {
     const file = this.localFile;
     const isExist = fs.existsSync(file);
-    console.log(`🤓 Reading figgo setup from ${file}`);
+    if (isExist) {
+      console.log(`🤓 Reading figgo setup from ${file}`);
+    }
     return isExist;
   }
 
