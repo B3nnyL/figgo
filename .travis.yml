@@ -4,4 +4,4 @@ node_js:
   - 8
   - 6
 env:
-  - NODE_ENV=prod
+  - NODE_ENV=test
