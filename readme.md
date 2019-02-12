@@ -74,7 +74,7 @@ How to use
 
 ### Sync Token
 
-![url](https://media.giphy.com/media/TgFp4BNx3GMFAay9SJ/giphy.gif)
+![url](https://i.imgur.com/wfWei0q.gif)
 
 ## Manual configuration
 
