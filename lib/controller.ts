@@ -87,7 +87,7 @@ export default class Controller {
 
   public removeBoard(bn: string) {
     if (this.isBoardExisted(bn)) {
-      const afterRemove = this.boards.filter(board => board.boardName === bn);
+      const afterRemove = this.boards.filter(board => board.boardName !== bn);
       this.storage.writeFile(afterRemove);
     } else {
       console.log(errorLog(`board ${bn} isn't existed`));
