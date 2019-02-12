@@ -72,11 +72,11 @@ export default class Controller {
     token: string
   ) {
     const newBoard = new Board(bn);
+    newBoard.id = id;
+    newBoard.outputDir = outputDir;
+    newBoard.outputFormat = outputFormat;
+    newBoard.token = token;
     this.appendBoard(newBoard, bn);
-    this.setBoardId(id, bn);
-    this.setBoardOutputDir(outputDir, bn);
-    this.setBoardOutputFormat(outputFormat, bn);
-    this.setBoardToken(token, bn);
   }
 
   public saveExistingBoard(target: Board, bn: string): void {
@@ -89,6 +89,7 @@ export default class Controller {
     if (this.isBoardExisted(bn)) {
       const afterRemove = this.boards.filter(board => board.boardName !== bn);
       this.storage.writeFile(afterRemove);
+      console.log(successLog(`board ${bn} is removed`));
     } else {
       console.log(errorLog(`board ${bn} isn't existed`));
     }
