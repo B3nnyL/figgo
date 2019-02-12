@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-
-import Controller from "./controller";
-import { getColors, getSpaces, getTypographics } from "./service";
-import { hints } from "./hint";
-import { prompt } from "enquirer";
 import * as meow from "meow";
+import { hints } from "./hint";
+import { getColors, getSpaces, getTypographics } from "./service";
+import { prompt } from "enquirer";
 import { saveColor, saveSpaces, saveTypos } from "./helper";
+import Controller from "./controller";
 
 const cli = meow(hints, {
   flags: {
@@ -41,8 +40,7 @@ const controller = new Controller();
 
 if (flags.list) {
   console.log("Listing...");
-  controller.getStorage().setBoards();
-  const boards = controller.getStorage().getBoards();
+  const boards = controller.getBoards();
   if (boards.length < 1) {
     console.log("No boards is stored with Figgo");
   } else {
@@ -58,8 +56,7 @@ if (flags.list) {
 if (flags.sync) {
   console.log("Sync...");
   if (input.length < 1) {
-    controller.getStorage().setBoards();
-    const boards = controller.getStorage().getBoards();
+    const boards = controller.getBoards();
     boards.forEach(board => {
       const { token, id, outputDir, outputFormat } = board;
       const colors = getColors(token, id, outputFormat);
@@ -76,8 +73,7 @@ if (flags.sync) {
         .catch(e => console.log(e));
     });
   } else {
-    controller.getStorage().setBoards();
-    const boards = input.map(bn => controller.getStorage().getBoard(bn));
+    const boards = input.map(bn => controller.getBoard(bn));
     boards.forEach(board => {
       const { token, id, outputDir, outputFormat } = board;
       const colors = getColors(token, id, outputFormat);
@@ -98,25 +94,23 @@ if (flags.sync) {
 
 if (flags.remove) {
   console.log(`Removing...`);
-  controller.getStorage().setBoards();
-  controller.getStorage().removeBoard(flags.remove);
+  controller.removeBoard(flags.remove);
 }
 
 if (flags.init) {
   console.log("init...");
-  controller.getStorage().setBoards();
   if (input.length < 1) {
     InitQustionaire()
       .then(res => {
         const { boardName, id, outputDir, outputFormat, token } = res;
-        controller.saveBoard(boardName, id, outputDir, outputFormat, token);
+        controller.saveNewBoard(boardName, id, outputDir, outputFormat, token);
       })
       .catch(error => {
         console.log("An error occured, please try again");
       });
   } else {
     const [boardName, id, outputDir, outputFormat, token] = input;
-    controller.saveBoard(boardName, id, outputDir, outputFormat, token);
+    controller.saveNewBoard(boardName, id, outputDir, outputFormat, token);
   }
 }
 
