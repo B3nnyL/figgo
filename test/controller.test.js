@@ -1,6 +1,5 @@
-import Board from "../lib/models/board";
 import Controller from "../lib/controller";
-
+import Board from "../lib/models/board";
 const TOKEN = "23333";
 const board = "my-board";
 
