@@ -25,7 +25,7 @@ export default class Typography {
   }
   get CSSFontFamily(): string {
     const handler = `${this.name}-FONT-FAMILY`;
-    const fontFamily = this.fontFamilyAddon(this.fontFamily);
+    const fontFamily = this.fontFamilyAddon(this.fontFamily, "scss");
     return `$${handler}: ${fontFamily};`;
   }
   get CSSFontWeight(): string {
@@ -46,7 +46,7 @@ export default class Typography {
   }
   get JSONFontFamily(): string {
     const name = this.name.replace(/-/g, "_");
-    const fontFamily = this.fontFamilyAddon(`'${this.fontFamily}'`);
+    const fontFamily = this.fontFamilyAddon(`'${this.fontFamily}'`, "js");
     const handler = `${name}_FONT_FAMILY`;
     return `export const ${handler} = "${fontFamily}";`;
   }
@@ -70,8 +70,11 @@ export default class Typography {
     const handler = `${name}_LINE_HEIGHT`;
     return `export const ${handler} = '${this.lineHeight.toFixed(2)}px';`;
   }
-  private fontFamilyAddon(fontFamily: string): string {
-    return `${fontFamily},-apple-system,BlinkMacSystemFont,Segoe UI,\
+  private fontFamilyAddon(fontFamily: string, format: string): string {
+    return format === "js"
+      ? `${fontFamily},-apple-system,BlinkMacSystemFont,Segoe UI,\
+    Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`
+      : `'${fontFamily}',-apple-system,BlinkMacSystemFont,Segoe UI,\
     Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`;
   }
 }
