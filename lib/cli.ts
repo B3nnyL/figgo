@@ -2,7 +2,7 @@
 import { prompt } from "enquirer";
 import * as meow from "meow";
 import Controller from "./controller";
-import { saveColor, saveSpaces, saveTypos } from "./helper";
+import { errorLog, saveColor, saveSpaces, saveTypos } from "./helper";
 import { hints } from "./hint";
 import { getColors, getSpaces, getTypographics } from "./service";
 
@@ -41,60 +41,81 @@ const controller = new Controller();
 if (flags.list) {
   console.log("Listing...");
   const boards = controller.getBoards();
-  if (boards.length < 1) {
-    console.log("No boards is stored with Figgo");
+  if (
+    !controller.getStorage().isStorageDirExisted() &&
+    !controller.getStorage().isLocalConfigFileExisted()
+  ) {
+    console.log(errorLog("No boards is stored with Figgo"));
   } else {
-    boards.map((board, i) =>
-      console.log(`
+    if (boards.length < 1) {
+      console.log(errorLog("No boards is stored with Figgo"));
+    } else {
+      boards.map((board, i) =>
+        console.log(`
     Board ${i + 1} Name: ${board.boardName} \n
     Token Directory: ${board.outputDir}\n
     Token Format: ${board.outputFormat}\n`)
-    );
+      );
+    }
   }
 }
 
 if (flags.sync) {
-  console.log("Sync...");
-  if (input.length < 1) {
-    const boards = controller.getBoards();
-    boards.forEach(board => {
-      const { token, id, outputDir, outputFormat } = board;
-      const colors = getColors(token, id, outputFormat);
-      const spaces = getSpaces(token, id, outputFormat);
-      const typos = getTypographics(token, id, outputFormat);
-      colors
-        .then(res => saveColor(outputDir, res, outputFormat))
-        .catch(e => console.log(e));
-      spaces
-        .then(res => saveSpaces(outputDir, res, outputFormat))
-        .catch(e => console.log(e));
-      typos
-        .then(res => saveTypos(outputDir, res, outputFormat))
-        .catch(e => console.log(e));
-    });
+  if (
+    !controller.getStorage().isLocalConfigFileExisted() &&
+    !controller.getStorage().isStorageDirExisted()
+  ) {
+    console.log(errorLog("No boards is stored with Figgo"));
   } else {
-    const boards = input.map(bn => controller.getBoard(bn));
-    boards.forEach(board => {
-      const { token, id, outputDir, outputFormat } = board;
-      const colors = getColors(token, id, outputFormat);
-      const spaces = getSpaces(token, id, outputFormat);
-      const typos = getTypographics(token, id, outputFormat);
-      colors
-        .then(res => saveColor(outputDir, res, outputFormat))
-        .catch(e => console.log(e));
-      spaces
-        .then(res => saveSpaces(outputDir, res, outputFormat))
-        .catch(e => console.log(e));
-      typos
-        .then(res => saveTypos(outputDir, res, outputFormat))
-        .catch(e => console.log(e));
-    });
+    console.log("Sync...");
+    if (input.length < 1) {
+      const boards = controller.getBoards();
+      boards.forEach(board => {
+        const { token, id, outputDir, outputFormat } = board;
+        const colors = getColors(token, id, outputFormat);
+        const spaces = getSpaces(token, id, outputFormat);
+        const typos = getTypographics(token, id, outputFormat);
+        colors
+          .then(res => saveColor(outputDir, res, outputFormat))
+          .catch(e => console.log(e));
+        spaces
+          .then(res => saveSpaces(outputDir, res, outputFormat))
+          .catch(e => console.log(e));
+        typos
+          .then(res => saveTypos(outputDir, res, outputFormat))
+          .catch(e => console.log(e));
+      });
+    } else {
+      const boards = input.map(bn => controller.getBoard(bn));
+      boards.forEach(board => {
+        const { token, id, outputDir, outputFormat } = board;
+        const colors = getColors(token, id, outputFormat);
+        const spaces = getSpaces(token, id, outputFormat);
+        const typos = getTypographics(token, id, outputFormat);
+        colors
+          .then(res => saveColor(outputDir, res, outputFormat))
+          .catch(e => console.log(e));
+        spaces
+          .then(res => saveSpaces(outputDir, res, outputFormat))
+          .catch(e => console.log(e));
+        typos
+          .then(res => saveTypos(outputDir, res, outputFormat))
+          .catch(e => console.log(e));
+      });
+    }
   }
 }
 
 if (flags.remove) {
-  console.log(`Removing...`);
-  controller.removeBoard(flags.remove);
+  if (
+    !controller.getStorage().isLocalConfigFileExisted() &&
+    !controller.getStorage().isConfigFileExisted()
+  ) {
+    console.log(errorLog("No boards is stored with Figgo"));
+  } else {
+    console.log(`Removing...`);
+    controller.removeBoard(flags.remove);
+  }
 }
 
 if (flags.init) {
@@ -106,7 +127,7 @@ if (flags.init) {
         controller.saveNewBoard(boardName, id, outputDir, outputFormat, token);
       })
       .catch(error => {
-        console.log("An error occured, please try again");
+        console.log(errorLog("An error occured, please try again"));
       });
   } else {
     const [boardName, id, outputDir, outputFormat, token] = input;
