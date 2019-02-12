@@ -97,6 +97,8 @@ Edit setup configuration from `config.js` in `~/.figgo` folder. You can also man
 - 0.1.2 ✍️ Readme
 - 0.1.3 🛠 Fix minor issues
 - 0.1.5 🤠 Better UX
+- 0.1.8 🤠 Project figgo.json is supported
+- 0.1.11 🤠Fix minor issues and improve UX
 
 ## TODOs
 
