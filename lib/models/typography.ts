@@ -72,9 +72,7 @@ export default class Typography {
   }
   private fontFamilyAddon(fontFamily: string, format: string): string {
     return format === "js"
-      ? `${fontFamily},-apple-system,BlinkMacSystemFont,Segoe UI,\
-    Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`
-      : `'${fontFamily}',-apple-system,BlinkMacSystemFont,Segoe UI,\
-    Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`;
+      ? `${fontFamily},-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`
+      : `'${fontFamily}',-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`;
   }
 }
