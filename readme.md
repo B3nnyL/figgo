@@ -18,8 +18,34 @@
 
 Assume you have already installed Figgo...
 
-- Run `figgo --init`, answer a few setup questions where you will leave file id and personal token with Figgo.
+### Global setup
+
+- Run `figgo --init`, answer a few setup questions where you will leave file id and personal token with Figgo. All configuration will save to `~/.figgo`. **_Note: output directory needs to be in absolute path._**
 - Tied your belt and type `figgo --sync`, let tokens store in the location you wish.
+- You may run `figgo --sync board_name` to update tokens selectively.
+
+### Local setup
+
+- Create `figgo.json` file under your project directory.
+
+```json
+{
+  "boards": [
+    {
+      "boardName": "your board name",
+      "id": "figma id",
+      "outputDir": "output directory (this can be a path relative to your project)",
+      "outputFormat": "js or scss",
+      "token": "your figma personal token"
+    },
+    {
+      ...
+    }
+  ]
+}
+```
+
+- Run `figgo --sync` and all tokens will store in the path you wish or update selectively via appending board name.
 
 ## Basic CLI Usage
 
@@ -27,11 +53,11 @@ Assume you have already installed Figgo...
 How to use
     $ figgo [<options> ...]
     Options
-      --init, -i         Setup figma board
-      --sync, -s         Sync tokens
+      --init, -i         Setup figma board and store configurations to global config files
+      --sync, -s         Sync tokens based on (global/local) config files
       --edit, -e         Edit board information (not ready yet)
-      --list, -l         List boards
-      --remove, -r       Remove board
+      --list, -l         List boards from global config files
+      --remove, -r       Remove board from global config files
       --help, -h         Show help message
       --version, -v      Show installed version
     Examples
@@ -47,9 +73,10 @@ How to use
 ```
 
 ### Sync Token
+
 ![url](https://media.giphy.com/media/TgFp4BNx3GMFAay9SJ/giphy.gif)
 
-## Edit configuration
+## Manual configuration
 
 Edit setup configuration from `config.js` in `~/.figgo` folder. You can also manually add Figma board through editting this file.
 
