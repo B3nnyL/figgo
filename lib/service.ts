@@ -1,10 +1,10 @@
 import fetch from "node-fetch";
+import { errorLog } from "./helper";
 import INAccount from "./interfaces/account.interface";
 import IBoard from "./interfaces/board.interface";
 import Color from "./models/color";
 import Space from "./models/spacing";
 import Typography from "./models/typography";
-import { errorLog } from "./helper";
 
 export async function getAccount(token: string): Promise<INAccount> {
   const url = `https://api.figma.com/v1/me`;
