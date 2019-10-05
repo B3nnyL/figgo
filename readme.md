@@ -107,6 +107,7 @@ Edit setup configuration from `config.js` in `~/.figgo` folder. You can also man
 - [x] CLI listing board information
 - [x] CLI specify board sync
 - [x] js output supports
+- [x] css variable support
 - [ ] Edit Figma board info from CLI
 - [x] Well-formatted and styled output in terminal
 - [ ] More screenshots and documentation
