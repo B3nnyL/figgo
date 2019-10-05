@@ -1,4 +1,4 @@
-import { BOARD, TOKEN } from "../lib/envConfig";
+import { BOARD, OWNER_NAME, TOKEN } from "../lib/envConfig";
 import {
 	auth,
 	getAccount,
@@ -12,7 +12,7 @@ describe("service can ", () => {
 	test("get user info", () => {
 		getAccount(TOKEN).then(res => {
 			const result = res.handle;
-			expect(result).toBe("Shuying");
+			expect(result).toBe(OWNER_NAME);
 		});
 	});
 
@@ -38,6 +38,6 @@ describe("service can ", () => {
 
 	test("get typo", async () => {
 		const res = await getTypographics(TOKEN, BOARD, "scss");
-		console.log(res);
+		expect(res.length).toBe(7);
 	});
 });

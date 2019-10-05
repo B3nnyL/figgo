@@ -36,7 +36,6 @@ describe("controller can ", () => {
 
 	test("remove board", () => {
 		myController.removeBoard(board);
-		console.log(myController.isBoardExisted(board));
 		expect(myController.isBoardExisted(board)).toBeTruthy();
 	});
 });
