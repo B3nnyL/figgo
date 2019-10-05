@@ -1,6 +1,6 @@
 <h1 align="center">Figgo</h1>
 <p align="center">A CLI tool make your design tokens always stay up to date with your Figma design styleguide</p>
-[![Build Status](https://travis-ci.org/B3nnyL/figgo.svg?branch=master)](https://travis-ci.org/B3nnyL/figgo)
+![Build Status](https://travis-ci.org/B3nnyL/figgo.svg?branch=master)](https://travis-ci.org/B3nnyL/figgo)
 
 ![img](assets/cover.png)
 
