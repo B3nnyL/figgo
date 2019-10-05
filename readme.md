@@ -100,6 +100,8 @@ Edit setup configuration from `config.js` in `~/.figgo` folder. You can also man
 - 0.1.8 🤠 Project figgo.json is supported
 - 0.1.11 🤠Fix minor issues and improve UX
 
+- 0.2 🧩Support css variable, fixed test and CI
+
 ## TODOs
 
 - [x] CLI listing board information
