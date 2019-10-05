@@ -3,7 +3,6 @@ os: osx
 node_js:
   - 10
   - 8
-  - 6
 env:
   - NODE_ENV=test
 before_install:
