@@ -1,6 +1,6 @@
 <h1 align="center">Figgo</h1>
 <p align="center">A CLI tool make your design tokens always stay up to date with your Figma design styleguide</p>
-
+![img](https://api.travis-ci.org/B3nnyL/figgo.svg?branch=master)
 ![img](assets/cover.png)
 
 ## Install Figgo

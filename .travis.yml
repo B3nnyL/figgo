@@ -1,7 +1,10 @@
 language: node_js
+os: osx
 node_js:
   - 10
   - 8
-  - 6
 env:
   - NODE_ENV=test
+before_install:
+  - mkdir ~/.figgo
+  - echo '{"boards":[]}' > ~/.figgo/config.json
