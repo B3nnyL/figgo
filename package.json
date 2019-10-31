@@ -1,11 +1,14 @@
 {
 	"name": "figgo",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "A CLI tool make your design tokens stay up to date with your Figma design styleguide",
-	"main": "dist/cli.js",
+	"main": "./dist/cli.js",
 	"bin": {
 		"figgo": "./dist/cli.js"
 	},
+	"files": [
+		"dist/*"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/B3nnyL/figgo.git"
@@ -20,7 +23,7 @@
 		"test": "NODE_ENV=test jest --verbose=false",
 		"pre:build": "yarn lint && yarn clean",
 		"build": "tsc",
-		"prod": "NODE_ENV=prod npm run build && npm i -g",
+		"prod": "NODE_ENV=prod npm run build && npm link",
 		"start": "yarn build && node ./dist/cli.js",
 		"dev": "NODE_ENV=dev ts-node ./lib/cli.ts",
 		"clean": "rimraf ./dist"
