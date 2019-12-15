@@ -1,4 +1,4 @@
-export default interface InAccount {
+export default interface INAccount {
   id: string;
   email: string;
   handle: string;
