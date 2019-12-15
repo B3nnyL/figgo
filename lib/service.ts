@@ -70,6 +70,7 @@ export async function getColors(
     const frames = data.document.children[0].children;
     const array = [];
     const colorFrame = frames.filter(frame => frame.name === "Palette");
+    if (!colorFrame.length) return colorFrame;
     const colorBlocks = colorFrame[0].children.filter(
       block => block.type === "RECTANGLE"
     );
@@ -95,10 +96,10 @@ export async function getSpaces(
     const frames = data.document.children[0].children;
     const array = [];
     const spaceFrame = frames.filter(frame => frame.name === "Space");
+    if (!spaceFrame.length) return spaceFrame;
     const spaceBlocks = spaceFrame[0].children.filter(
       blocks => blocks.type === "RECTANGLE"
     );
-
     for (const i in spaceBlocks) {
       if (spaceBlocks) {
         const name = spaceBlocks[i].name;
@@ -121,6 +122,7 @@ export async function getTypographics(
     const frames = data.document.children[0].children;
     const array = [];
     const typoFrame = frames.filter(frame => frame.name === "Typography");
+    if (!typoFrame.length) return typoFrame;
     const typoBlocks = typoFrame[0].children.filter(
       blocks => blocks.type === "TEXT"
     );
