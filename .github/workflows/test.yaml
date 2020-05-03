@@ -20,6 +20,11 @@ jobs:
           TEST_OWNER: ${{ secrets.TEST_OWNER }}
       - name: Install dependency
         run: npm i
+      - name: Setup temp files
+        run: | 
+          mkdir ~/.figgo	
+          echo '{"boards":[]}' > ~/.figgo/config.json
+        shell: bash
       - name: Run test
         run: npm test
         env:
