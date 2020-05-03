@@ -1,0 +1,22 @@
+name: node.js ci test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with: 
+          node-version: ${{matrix.node-version}}
+        env:
+          TEST_ENV: ${{ secrets.TEST_ENV }}
+          TEST_BOARD: ${{ secrets.TEST_BOARD }}
+          TEST_OWNER: ${{ secrets.TEST_OWNER }}
+      - run: npm i
+      - run: npm test
