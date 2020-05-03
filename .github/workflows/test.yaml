@@ -18,5 +18,6 @@ jobs:
           TEST_ENV: ${{ secrets.TEST_ENV }}
           TEST_BOARD: ${{ secrets.TEST_BOARD }}
           TEST_OWNER: ${{ secrets.TEST_OWNER }}
+      - run: echo $TEST_OWNER 
       - run: npm i
       - run: npm test
