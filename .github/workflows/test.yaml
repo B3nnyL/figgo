@@ -21,8 +21,10 @@ jobs:
       - name: Install dependency
         run: npm i
       - name: Run test
+        run: echo $NODE_ENV
         run: npm test
         env:
           TEST_ENV: ${{ secrets.TEST_ENV }}
           TEST_BOARD: ${{ secrets.TEST_BOARD }}
-          TEST_OWNER: ${{ secrets.TEST_OWNER }}
+          TEST_OWNER: ${{ TEST_OWNER }}
+          NODE_ENV: test
