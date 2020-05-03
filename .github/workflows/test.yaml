@@ -14,10 +14,15 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: ${{matrix.node-version}}
+      - name: Debugging
+        run: echo $TEST_OWNER
+        env:
+          TEST_OWNER: ${{ secrets.TEST_OWNER }}
+      - name: Install dependency
+        run: npm i
+      - name: Run test
+        run: npm test
         env:
           TEST_ENV: ${{ secrets.TEST_ENV }}
           TEST_BOARD: ${{ secrets.TEST_BOARD }}
           TEST_OWNER: ${{ secrets.TEST_OWNER }}
-      - run: echo $TEST_OWNER 
-      - run: npm i
-      - run: npm test
