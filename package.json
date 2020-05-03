@@ -1,6 +1,6 @@
 {
 	"name": "figgo",
-	"version": "0.2.3",
+	"version": "0.2.4",
 	"description": "A CLI tool make your design tokens stay up to date with your Figma design styleguide",
 	"main": "./dist/cli.js",
 	"bin": {
