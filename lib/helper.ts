@@ -76,7 +76,7 @@ export function saveTypos(outDir: string, typos: string[], type: string) {
 
 // covert float number to integer
 export function floatToInt(float: number): number {
-  return Math.ceil(float * 255);
+  return Math.round(float * 255);
 }
 
 // convert interger to hex
