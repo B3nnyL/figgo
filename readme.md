@@ -65,7 +65,7 @@ How to use
     Examples
       $ figgo --init
       $ figgo --init board_name board_id output_absolute_path output_format(js|scss) figma_token
-      $ figgp --edit board_name (not ready yet)
+      $ figgo --edit board_name (not ready yet)
       $ figgo --list
       $ figgo --sync
       $ figgo --sync board_name
